@@ -1,0 +1,29 @@
+<head>
+  <!-- Add CSS file -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="login.css" />
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="login.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+</head>
+
+<body>
+  <div class="common-header">Log In</div>
+  <div class="login-body">
+    <img class="login-message" src="image/message.png" alt="code message">
+    <div class="login-info">Enter your<br>phone number.</div>
+    <input type="tel" class="login-number" placeholder="000-0000-0000" maxlength="13">
+    <div class="login-send" id="unact">send code</div>
+    <div class="login-info hidden" id="second">Enter received<br>verification code.</div>
+    <input type="tel" class="login-code hidden" placeholder="000000" maxlength="6">
+    <div class="login-verify hidden" id="unact">verify</div>
+    <div class="login-error hidden">! Invalid code !</div>
+    <div class="login-auto">
+      <img class="login-check hidden" src="image/check.png" alt="message picture">
+      <div class="login-autobox hidden"></div>
+      <div class="login-autotext hidden">Remember me</div>
+    </div>
+  </div>
+</body>

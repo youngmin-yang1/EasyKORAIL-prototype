@@ -1,0 +1,84 @@
+<head>
+  <!-- Add CSS file -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="passenger.css" />
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="reservation.js"></script>
+  <script src="passenger.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+</head>
+
+<body>
+  <div class="reservation-progress">Reservation Progress</div>
+  <div class="reservation-progress-more">
+    <img class="reservation-progress-arrow" src="image\reservation-arrow.png" alt="see all progresses">
+  </div>
+  <div class="reservation-progress-table">
+    <div class="progress-dummy">
+      <div class="progress-gg" id="done"></div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Station</div>
+      <a href="station.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="station">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="current-progress"></div>
+      <div class="progress-name">Passenger</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text">selecting...</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Date</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Time</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Seat</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-dummy">
+      <div class="progress-gg" id="cannot"></div>
+    </div>
+  </div>
+  <div class="instruction">
+    <div class="instruction-title">Passenger</div>
+    <div class="instruction-text">Select the number of passengers.</div>
+  </div>
+  <div class="reservation-body">
+    <div class="passenger-group">
+      <div class="passenger-name">Adult</div>
+      <div class="passenger-minus" id="am">-</div>
+      <div class="passenger-num" id="adult">0</div>
+      <div class="passenger-plus" id="ap">+</div>
+    </div>
+    <div class="passenger-group">
+      <div class="passenger-name">Child</div>
+      <div class="passenger-minus" id="cm">-</div>
+      <div class="passenger-num" id="child">0</div>
+      <div class="passenger-plus" id="cp">+</div>
+    </div>
+    <div class="passenger-group">
+      <div class="passenger-name">Senior</div>
+      <div class="passenger-minus" id="sm">-</div>
+      <div class="passenger-num" id="senior">0</div>
+      <div class="passenger-plus" id="sp">+</div>
+    </div>
+  </div>
+  <div class="underbar">
+    <div class="underbar-left">prev</div>
+    <div class="underbar-right">next</div>
+  </div>
+</body>

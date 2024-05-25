@@ -1,0 +1,123 @@
+<head>
+  <!-- Add CSS file -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="date.css" />
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="reservation.js"></script>
+  <script src="date.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+</head>
+
+<body>
+  <div class="reservation-progress">Reservation Progress</div>
+  <div class="reservation-progress-more">
+    <img class="reservation-progress-arrow" src="image\reservation-arrow.png" alt="see all progresses">
+  </div>
+  <div class="reservation-progress-table">
+    <div class="progress-dummy">
+      <div class="progress-gg" id="done"></div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Station</div>
+      <a href="station.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="station">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Passenger</div>
+      <a href="passenger.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="passenger">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="current-progress"></div>
+      <div class="progress-name">Date</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text">selecting...</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Time</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Seat</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-dummy">
+      <div class="progress-gg" id="cannot"></div>
+    </div>
+  </div>
+  <div class="instruction">
+    <div class="instruction-title">Date</div>
+    <div class="instruction-text">Select a date for departure.</div>
+  </div>
+  <div class="reservation-body">
+    <div class="date-bar">
+      <div class="date-month">06</div>
+    </div>
+    <div class="date-daybar">
+      <div class="date-dayhead" id="redday">Sun</div>
+      <div class="date-dayhead">Mon</div>
+      <div class="date-dayhead">Tue</div>
+      <div class="date-dayhead">Wed</div>
+      <div class="date-dayhead">Thu</div>
+      <div class="date-dayhead">Fri</div>
+      <div class="date-dayhead" id="blueday">Sat</div>
+    </div>
+    <div class="date-week">
+      <div class="date-day" id="red-not">2</div>
+      <div class="date-day" id="black-not">3</div>
+      <div class="date-day" id="black-not">4</div>
+      <div class="date-day" id="black-unsel">5</div>
+      <div class="date-day" id="red-unsel">6</div>
+      <div class="date-day" id="black-unsel">7</div>
+      <div class="date-day" id="blue-unsel">8</div>
+    </div>
+    <div class="date-week">
+      <div class="date-day" id="red-unsel">9</div>
+      <div class="date-day" id="black-unsel">10</div>
+      <div class="date-day" id="black-unsel">11</div>
+      <div class="date-day" id="black-unsel">12</div>
+      <div class="date-day" id="black-unsel">13</div>
+      <div class="date-day" id="black-unsel">14</div>
+      <div class="date-day" id="blue-unsel">15</div>
+    </div>
+    <div class="date-week">
+      <div class="date-day" id="red-unsel">16</div>
+      <div class="date-day" id="black-unsel">17</div>
+      <div class="date-day" id="black-unsel">18</div>
+      <div class="date-day" id="black-unsel">19</div>
+      <div class="date-day" id="black-unsel">20</div>
+      <div class="date-day" id="black-unsel">21</div>
+      <div class="date-day" id="blue-unsel">22</div>
+    </div>
+    <div class="date-week">
+      <div class="date-day" id="red-unsel">23</div>
+      <div class="date-day" id="black-unsel">24</div>
+      <div class="date-day" id="black-unsel">25</div>
+      <div class="date-day" id="black-unsel">26</div>
+      <div class="date-day" id="black-unsel">27</div>
+      <div class="date-day" id="black-unsel">28</div>
+      <div class="date-day" id="blue-unsel">29</div>
+    </div>
+    <div class="date-week">
+      <div class="date-day" id="red-unsel">30</div>
+      <div class="date-day" id="black-unsel">1</div>
+      <div class="date-day" id="black-unsel">2</div>
+      <div class="date-day" id="black-not">3</div>
+      <div class="date-day" id="black-not">4</div>
+      <div class="date-day" id="black-not">5</div>
+      <div class="date-day" id="blue-not">6</div>
+    </div>
+  </div>
+  <div class="underbar">
+    <div class="underbar-left">prev</div>
+    <div class="underbar-right">next</div>
+  </div>
+</body>

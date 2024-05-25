@@ -1,0 +1,31 @@
+<head>
+  <!-- Add CSS file -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="tickets.css" />
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="tickets.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+</head>
+
+<body>
+  <div class="common-header">My Tickets</div>
+  <div class="ticket-body">
+    <div class="ticket-list" id="reserve">
+      <div class="uncommon-header">Reserved</div>
+    </div>
+    <div class="ticket-blank"></div>
+    <div class="ticket-list" id="request">
+      <div class="uncommon-header">Payment requested</div>
+    </div>
+    <div class="ticket-blank"></div>
+    <div class="ticket-list">
+      <div class="uncommon-header" id="cash">Purchased</div>
+    </div>
+  </div>
+  <div class="underbar">
+    <div class="underbar-left">prev</div>
+    <div class="underbar-right" id="common">none</div>
+  </div>
+</body>

@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,500|Noto+Sans:400,500");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap");
+
+.date-bar {
+  width: 100%;
+  height: 50px;
+  position: relative;
+  font-family: "Inter";
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center;
+  
+}
+
+.date-month {
+  height: 50px;
+  font-family: "Inter";
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 50px;
+    text-align: center;
+    vertical-align: center;
+  color: #000000;
+}
+
+.date-daybar {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  font-family: "Inter";
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center;
+  border-bottom: 3px solid black;
+}
+
+.date-dayhead {
+  width: 50px;
+    height: 40px;
+    position: relative;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    vertical-align: center;
+  color: #000000;
+}
+
+.date-week {
+  width: 100%;
+  height: 60px;
+  position: relative;
+  font-family: "Inter";
+  display: flex;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center;
+  border-bottom: 1px solid black;
+}
+
+.date-day {
+  width: 50px;
+    height: 60px;
+    position: relative;
+    font-family: "Inter";
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: right;
+    box-sizing: border-box;
+    padding-right: 5px;
+  color: #000000;
+}
+
+#red-not {
+  color: red;
+  background-color: #555151;
+}
+
+#blue-not {
+  color: blue;
+  background-color: #555151;
+}
+
+#black-not {
+  color: black;
+  background-color: #555151;
+}
+
+#red-unsel {
+  color: red;
+  background-color: #D9D9D9;
+}
+
+#blue-unsel {
+  color: blue;
+  background-color: #D9D9D9;
+}
+
+#black-unsel {
+  color: black;
+  background-color: #D9D9D9;
+}
+
+#red-sel {
+  color: red;
+  background-color: #77DD77;
+}
+
+#blue-sel {
+  color: blue;
+  background-color: #77DD77;
+}
+
+#black-sel {
+  color: black;
+  background-color: #77DD77;
+}
+
+#redday {
+  color: red;
+}
+
+#blueday {
+  color: blue;
+}

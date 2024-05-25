@@ -1,0 +1,205 @@
+<head>
+  <!-- Add CSS file -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="seat.css" />
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="reservation.js"></script>
+  <script src="seat.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+</head>
+
+<body>
+  <div class="reservation-progress">Reservation Progress</div>
+  <div class="reservation-progress-more">
+    <img class="reservation-progress-arrow" src="image\reservation-arrow.png" alt="see all progresses">
+  </div>
+  <div class="reservation-progress-table">
+    <div class="progress-dummy">
+      <div class="progress-gg" id="done"></div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Station</div>
+      <a href="station.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="station">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Passenger</div>
+      <a href="passenger.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="passenger">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Date</div>
+      <a href="date.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="date">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Time</div>
+      <a href="time.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="time">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="current-progress"></div>
+      <div class="progress-name">Seat</div>
+      <div class="progress-edit" id="unact">edit</div>
+      <div class="progress-text">selecting...</div>
+    </div>
+    <div class="progress-dummy">
+      <div class="progress-gg" id="cannot"></div>
+    </div>
+  </div>
+  <div class="instruction">
+    <div class="instruction-title">Seat</div>
+    <div class="instruction-text">Select your seat. (0/1)</div>
+  </div>
+  <div class="reservation-body">
+    <div class="seat-bar">
+      <div class="seat-left">
+        <img class="seat-arrow" id="flip" src="image/seat-arrow.png" alt="arrow picture">
+        <div class="seat-textbox">0</div>
+      </div>
+      <div class="seat-textbox">0</div>
+      <div class="seat-right">
+        <div class="seat-textbox">0</div>
+        <img class="seat-arrow" src="image/seat-arrow.png" alt="arrow picture">
+      </div>
+    </div>
+    <div class="seattable">
+      <div class="seat-line">
+        <div class="seat-each" id="normal">1A</div>
+        <div class="seat-each" id="normal">1B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">1C</div>
+        <div class="seat-each" id="normal">1D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">2A</div>
+        <div class="seat-each" id="normal">2B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">2C</div>
+        <div class="seat-each" id="normal">2D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">3A</div>
+        <div class="seat-each" id="normal">3B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">3C</div>
+        <div class="seat-each" id="normal">3D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">4A</div>
+        <div class="seat-each" id="normal">4B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">4C</div>
+        <div class="seat-each" id="normal">4D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">5A</div>
+        <div class="seat-each" id="normal">5B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">5C</div>
+        <div class="seat-each" id="normal">5D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">6A</div>
+        <div class="seat-each" id="normal">6B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">6C</div>
+        <div class="seat-each" id="normal">6D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">7A</div>
+        <div class="seat-each" id="normal">7B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">7C</div>
+        <div class="seat-each" id="normal">7D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">8A</div>
+        <div class="seat-each" id="normal">8B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">8C</div>
+        <div class="seat-each" id="normal">8D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">9A</div>
+        <div class="seat-each" id="normal">9B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">9C</div>
+        <div class="seat-each" id="normal">9D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">10A</div>
+        <div class="seat-each" id="normal">10B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">10C</div>
+        <div class="seat-each" id="normal">10D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">11A</div>
+        <div class="seat-each" id="normal">11B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">11C</div>
+        <div class="seat-each" id="normal">11D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">12A</div>
+        <div class="seat-each" id="normal">12B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">12C</div>
+        <div class="seat-each" id="normal">12D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">13A</div>
+        <div class="seat-each" id="normal">13B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">13C</div>
+        <div class="seat-each" id="normal">13D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">14A</div>
+        <div class="seat-each" id="normal">14B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">14C</div>
+        <div class="seat-each" id="normal">14D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">15A</div>
+        <div class="seat-each" id="normal">15B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">15C</div>
+        <div class="seat-each" id="normal">15D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">16A</div>
+        <div class="seat-each" id="normal">16B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">16C</div>
+        <div class="seat-each" id="normal">16D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">17A</div>
+        <div class="seat-each" id="normal">17B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">17C</div>
+        <div class="seat-each" id="normal">17D</div>
+      </div>
+      <div class="seat-line">
+        <div class="seat-each" id="normal">18A</div>
+        <div class="seat-each" id="normal">18B</div>
+        <div class="seat-blank"></div>
+        <div class="seat-each" id="normal">18C</div>
+        <div class="seat-each" id="normal">18D</div>
+      </div>
+    </div>
+  </div>
+  <div class="underbar">
+    <div class="underbar-left">prev</div>
+    <div class="underbar-right">next</div>
+  </div>
+</body>

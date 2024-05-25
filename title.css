@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,500|Noto+Sans:400,500");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap");
+
+.title-body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  background-color: black;
+  flex-direction: column;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center;
+}
+
+.title-start {
+  width: 330px;
+  height: 110px;
+  position: fixed;
+  background-color: #D9D9D9;
+  font-family: "Inter";
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 가로 중앙 정렬 */
+  vertical-align: center;
+  letter-spacing: 3px;
+  border-radius: 45px;
+  border: 5px solid black;
+  transform: translate(0, 250px); /* 이미지 중앙 정렬 */
+}
+
+.title-big {
+  font-weight: 800;
+  font-size: 40px;
+}
+
+.title-small {
+  font-weight: 800;
+  font-size: 24px;
+}

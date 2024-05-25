@@ -1,0 +1,143 @@
+<head>
+  <!-- Add CSS file -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="time.css" />
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="reservation.js"></script>
+  <script src="time.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+</head>
+
+<body>
+  <div class="reservation-progress">Reservation Progress</div>
+  <div class="reservation-progress-more">
+    <img class="reservation-progress-arrow" src="image\reservation-arrow.png" alt="see all progresses">
+  </div>
+  <div class="reservation-progress-table">
+    <div class="progress-dummy">
+      <div class="progress-gg" id="done"></div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Station</div>
+      <a href="station.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="station">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Passenger</div>
+      <a href="passenger.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="passenger">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="done"></div>
+      <div class="progress-name">Date</div>
+      <a href="date.html"><div class="progress-edit">edit</div></a>
+      <div class="progress-text" id="date">selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="current-progress"></div>
+      <div class="progress-name">Time</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text">selecting...</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Seat</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-dummy">
+      <div class="progress-gg" id="cannot"></div>
+    </div>
+  </div>
+  <div class="instruction">
+    <div class="instruction-title">Time</div>
+    <div class="instruction-text">Select a time for departure.</div>
+  </div>
+  <div class="reservation-body">
+    <div class="timetable">
+      <div class="time-elem">
+        <div class="time-dur">06:00 -> 07:10</div>
+        <div class="time-price">13,300₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">07:10 -> 08:23</div>
+        <div class="time-price">13,400₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem" id="cannot">
+        <div class="time-dur">08:30 -> 09:38</div>
+        <div class="time-price">13,400₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">09:45 -> 10:55</div>
+        <div class="time-price">13,300₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">11:00 -> 12:15</div>
+        <div class="time-price">13,200₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">12:12 -> 13:13</div>
+        <div class="time-price">13,300₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">13:30 -> 14:41</div>
+        <div class="time-price">13,200₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">14:40 -> 15:57</div>
+        <div class="time-price">13,400₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">15:50 -> 17:01</div>
+        <div class="time-price">13,100₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">17:00 -> 18:05</div>
+        <div class="time-price">13,200₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">18:00 -> 19:10</div>
+        <div class="time-price">13,400₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem" id="cannot">
+        <div class="time-dur">19:00 -> 20:07</div>
+        <div class="time-price">13,300₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">20:02 -> 21:13</div>
+        <div class="time-price">13,500₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">21:10 -> 22:20</div>
+        <div class="time-price">13,300₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+      <div class="time-elem">
+        <div class="time-dur">22:22 -> 23:33</div>
+        <div class="time-price">13,400₩</div>
+        <div class="time-more hidden">more info</div>
+      </div>
+    </div>
+  </div>
+  <div class="underbar">
+    <div class="underbar-left">prev</div>
+    <div class="underbar-right">next</div>
+  </div>
+</body>

@@ -1,0 +1,122 @@
+<head>
+  <!-- Add CSS file -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="station.css" />
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="reservation.js"></script>
+  <script src="station.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width", initial-scale="1.0">
+</head>
+
+<body>
+  <div class="reservation-progress">Reservation Progress</div>
+  <div class="reservation-progress-more">
+    <img class="reservation-progress-arrow" src="image/reservation-arrow.png" alt="see all progresses">
+  </div>
+  <div class="reservation-progress-table">
+    <div class="progress-dummy">
+      <div class="progress-gg" id="done"></div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="current-progress"></div>
+      <div class="progress-name">Station</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text">selecting...</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Passenger</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Date</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Time</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-elem">
+      <div class="progress-gg" id="cannot"></div>
+      <div class="progress-name">Seat</div>
+      <div class="progress-edit", id="unact">edit</div>
+      <div class="progress-text", id="unselect">not selected</div>
+    </div>
+    <div class="progress-dummy">
+      <div class="progress-gg" id="cannot"></div>
+    </div>
+  </div>
+  <div class="instruction">
+    <div class="instruction-title">Station</div>
+    <div class="instruction-text">Select departure/arrival station.</div>
+  </div>
+  <div class="reservation-body">
+    <div class="station-box-name">Departure</div>
+    <div class="station-box" id="departure">Select</div>
+    <img class="station-arrow" src="image/station-arrow.png" alt="arrow picture">
+    <div class="station-box-name">Arrival</div>
+    <div class="station-box" id="arrival">Select</div>
+  </div>
+  <div class="underbar">
+    <div class="underbar-left">prev</div>
+    <div class="underbar-right">next</div>
+  </div>
+  <div class="station-listback">
+    <div class="common-header">Departure Station</div>
+    <div class="station-list">
+      <div class="station-elem">Asan</div>
+      <div class="station-elem">Busan</div>
+      <div class="station-elem">Changwon</div>
+      <div class="station-elem">Cheonan</div>
+      <div class="station-elem">Daegu</div>
+      <div class="station-elem">Daejeon</div>
+      <div class="station-elem">Dongdaegu</div>
+      <div class="station-elem">Dongtan</div>
+      <div class="station-elem">Dunnae</div>
+      <div class="station-elem">Gangneung</div>
+      <div class="station-elem">Gimcheon</div>
+      <div class="station-elem">Gongju</div>
+      <div class="station-elem">Goyang</div>
+      <div class="station-elem">Gumi</div>
+      <div class="station-elem">Gupo</div>
+      <div class="station-elem">Gwangju</div>
+      <div class="station-elem">Gwangmyeong</div>
+      <div class="station-elem">Gyeongju</div>
+      <div class="station-elem">Haengsin</div>
+      <div class="station-elem">Hoengseong</div>
+      <div class="station-elem">Iksan</div>
+      <div class="station-elem">Incheon</div>
+      <div class="station-elem">Jinbu</div>
+      <div class="station-elem">Jinju</div>
+      <div class="station-elem">Jecheon</div>
+      <div class="station-elem">Jeonju</div>
+      <div class="station-elem">Masan</div>
+      <div class="station-elem">Miryang</div>
+      <div class="station-elem">Mokpo</div>
+      <div class="station-elem">Naju</div>
+      <div class="station-elem">Nonsan</div>
+      <div class="station-elem">Osong</div>
+      <div class="station-elem">Pohang</div>
+      <div class="station-elem">Pyeongchang</div>
+      <div class="station-elem">Pyeongtaek</div>
+      <div class="station-elem">Seodaejeon</div>
+      <div class="station-elem">Seoul</div>
+      <div class="station-elem">Suseo</div>
+      <div class="station-elem">Suncheon</div>
+      <div class="station-elem">Suwon</div>
+      <div class="station-elem">Ulsan</div>
+      <div class="station-elem">Wonju</div>
+      <div class="station-elem">Yeocheon</div>
+      <div class="station-elem">Yeosu</div>
+      <div class="station-elem">Yeongdeungpo</div>
+      <div class="station-elem">Yongsan</div>
+    </div>
+  </div>
+</body>
