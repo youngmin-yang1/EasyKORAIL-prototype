@@ -10,6 +10,7 @@ $(document).ready(function() {
   let adultnum = parseInt(adult);
   let childnum = parseInt(child);
   let seniornum = parseInt(senior);
+  let pnum = adultnum + childnum + seniornum;
   let passenger = "";
   if(seniornum > 0) {
     if(seniornum == 1) passenger += senior + " senior";
@@ -68,6 +69,8 @@ $(document).ready(function() {
   $('#duration').text(diffHours + "h " + diffMinutes + "m");
   let price = localStorage.getItem('price');
   $('#price').text(price);
+  let trainnum = localStorage.getItem('trainnum');
+  $('#trainnum').text(trainnum);
       $('.underbar-left').on('click', function() {
         window.location.href = 'time.html';
       });

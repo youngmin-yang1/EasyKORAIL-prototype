@@ -42,33 +42,78 @@ $(document).ready(function() {
           num = 0;
           day = $(this).text();
           $('.underbar-right').attr('id', 'normal');
+          $(this).addClass('asdf');
           return 'black-sel';
         }
         if (id === 'blue-unsel' && num == 1) {
           num = 0;
           day = $(this).text();
           $('.underbar-right').attr('id', 'normal');
+          $(this).addClass('asdf');
           return 'blue-sel';
         }
         if (id === 'red-unsel' && num == 1) {
           num = 0;
           day = $(this).text();
           $('.underbar-right').attr('id', 'normal');
+          $(this).addClass('asdf');
+          return 'red-sel';
+        }
+        if (id === 'black-unsel' && num == 0) {
+          num = 0;
+          day = $(this).text();
+          let theid = $('.asdf').attr('id');
+          $('.asdf').removeAttr('id');
+          if (theid === 'black-sel') $('.asdf').attr('id', 'black-unsel');
+          if (theid === 'blue-sel') $('.asdf').attr('id', 'blue-unsel');
+          if (theid === 'red-sel') $('.asdf').attr('id', 'red-unsel');
+          $('.asdf').removeClass('asdf');
+          $('.underbar-right').attr('id', 'normal');
+          $(this).addClass('asdf');
+          return 'black-sel';
+        }
+        if (id === 'blue-unsel' && num == 0) {
+          num = 0;
+          day = $(this).text();
+          let theid = $('.asdf').attr('id');
+          $('.asdf').removeAttr('id');
+          if (theid === 'black-sel') $('.asdf').attr('id', 'black-unsel');
+          if (theid === 'blue-sel') $('.asdf').attr('id', 'blue-unsel');
+          if (theid === 'red-sel') $('.asdf').attr('id', 'red-unsel');
+          $('.asdf').removeClass('asdf');
+          $('.underbar-right').attr('id', 'normal');
+          $(this).addClass('asdf');
+          return 'blue-sel';
+        }
+        if (id === 'red-unsel' && num == 0) {
+          num = 0;
+          day = $(this).text();
+          let theid = $('.asdf').attr('id');
+          $('.asdf').removeAttr('id');
+          if (theid === 'black-sel') $('.asdf').attr('id', 'black-unsel');
+          if (theid === 'blue-sel') $('.asdf').attr('id', 'blue-unsel');
+          if (theid === 'red-sel') $('.asdf').attr('id', 'red-unsel');
+          $('.asdf').removeClass('asdf');
+          $('.underbar-right').attr('id', 'normal');
+          $(this).addClass('asdf');
           return 'red-sel';
         }
         if (id === 'black-sel') {
           num = 1;
           $('.underbar-right').removeAttr('id');
+          $(this).removeClass('asdf');
           return 'black-unsel';
         }
         if (id === 'blue-sel') {
           num = 1;
           $('.underbar-right').removeAttr('id');
+          $(this).removeClass('asdf');
           return 'blue-unsel';
         }
         if (id === 'red-sel') {
           num = 1;
           $('.underbar-right').removeAttr('id');
+          $(this).removeClass('asdf');
           return 'red-unsel';
         }
       });

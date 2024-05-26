@@ -70,7 +70,12 @@ $(document).ready(function() {
                 let dur = diffHours + "h " + diffMinutes + "m";
   $('#duration').text(dur);
   let price = localStorage.getItem('price');
-  $('#price').text(price);
+  let number = parseInt(price.replace(/[^0-9]/g, ''), 10);
+  let multipliedNumber = number * pnum;
+  let formattedString = multipliedNumber.toLocaleString() + '₩';
+  $('#price').text(formattedString);
+  let trainnum = localStorage.getItem('trainnum');
+  $('#trainnum').text(trainnum);
   let seatlist = JSON.parse(localStorage.getItem('seatlist'));
   let car = localStorage.getItem('car');
   let seatcar = seatlist.map(item => car + '-' + item);
@@ -108,6 +113,7 @@ $(document).ready(function() {
         let ticket = {
           dep: departure,
           arr: arrival,
+          tnum: trainnum,
           pass: passenger,
           psize: passsize,
           date: date,
@@ -116,7 +122,7 @@ $(document).ready(function() {
           dur: dur,
           seats: seats,
           ssize: pnum,
-          price: price,
+          price: formattedString,
           request: 0
         };
         let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));

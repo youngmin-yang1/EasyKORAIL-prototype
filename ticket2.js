@@ -11,6 +11,7 @@ $(document).ready(function() {
   $('#duration').text(ticketlist[index].dur);
   $('#seats').html(ticketlist[index].seats);
   $('#price').text(ticketlist[index].price);
+  $('#trainnum').text(ticketlist[index].tnum);
   let pnum = ticketlist[index].ssize;
   if(pnum > 3) {
     $('#risk2').removeClass('check-elem1');
