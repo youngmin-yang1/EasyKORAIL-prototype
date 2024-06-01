@@ -12,7 +12,7 @@ $(document).ready(function() {
   $('#station').text(station);
   let adult = 0;
   let child = 0;
-  let senior = 1;
+  let senior = 0;
 
   $('#adult').text(adult);
   $('#child').text(child);
