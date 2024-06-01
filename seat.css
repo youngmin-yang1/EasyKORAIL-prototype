@@ -92,17 +92,17 @@
   height: 60px;
 }
 
-.seat-middle-text {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.seat-middle {
+  width: 110px; /* adjust width if necessary */
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
   font-family: "Inter";
   font-weight: 700;
   font-size: 24px;
-  line-height: 60px;
-  color: black;
+  border-radius: 10px;
+  /* border: 3px solid black; */ /* Remove this line */
+  box-sizing: border-box;
 }
 
 #flip {
