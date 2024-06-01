@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <!-- Add CSS file -->
   <link rel="stylesheet" href="main.css" />
@@ -7,6 +9,13 @@
   <script src="request.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width", initial-scale="1.0">
+  <style>
+    /* Add custom CSS for the readonly input */
+    .contact-name {
+      font-size: 1.2em; /* Change the font size to your desired value */
+      text-align: center; /* Center align the text */
+    }
+  </style>
 </head>
 
 <body>
@@ -15,6 +24,7 @@
     <div class="login-info">Enter the phone number of the person to send the payment request to,
       or choose from your contacts.</div>
     <input type="tel" class="login-number" placeholder="000-0000-0000" maxlength="13">
+    <input type="text" class="contact-name" placeholder="Selected contact" readonly>
     <div class="login-send">open contacts</div>
   </div>
   <div class="underbar">
@@ -24,49 +34,80 @@
   <div class="station-listback">
     <div class="common-header" id="contact">My Contacts</div>
     <div class="station-list">
-      <div class="station-elem">Alice Johnson</div>
-      <div class="station-elem">Anna Cooper</div>
-      <div class="station-elem">Ben Collins</div>
-      <div class="station-elem">Bob Brown</div>
-      <div class="station-elem">Cara Davis</div>
-      <div class="station-elem">Carol White</div>
-      <div class="station-elem">Dan Evans</div>
-      <div class="station-elem">David Black</div>
-      <div class="station-elem">Ella Foster</div>
-      <div class="station-elem">Eve Green</div>
-      <div class="station-elem">Faker</div>
-      <div class="station-elem">Finn Garcia</div>
-      <div class="station-elem">Frank Harris</div>
-      <div class="station-elem">Gina Hill</div>
-      <div class="station-elem">Grace Lewis</div>
-      <div class="station-elem">Hank Young</div>
-      <div class="station-elem">Hugo Johnson</div>
-      <div class="station-elem">Iris Kelly</div>
-      <div class="station-elem">Ivy Clark</div>
-      <div class="station-elem">Jack Hall</div>
-      <div class="station-elem">Jake Lee</div>
-      <div class="station-elem">Jane Smith</div>
-      <div class="station-elem">John Doe</div>
-      <div class="station-elem">Kara Martin</div>
-      <div class="station-elem">Kim Scott</div>
-      <div class="station-elem">Leo King</div>
-      <div class="station-elem">Liam Nelson</div>
-      <div class="station-elem">Mia Walker</div>
-      <div class="station-elem">MooooooooooM</div>
-      <div class="station-elem">Nina Baker</div>
-      <div class="station-elem">Oscar Allen</div>
-      <div class="station-elem">Pam Lee</div>
-      <div class="station-elem">Quinn Wright</div>
-      <div class="station-elem">Ruby Adams</div>
-      <div class="station-elem">Sam Carter</div>
-      <div class="station-elem">Songlasses</div>
-      <div class="station-elem">Tina Miller</div>
-      <div class="station-elem">Uma Nelson</div>
-      <div class="station-elem">Vince Parker</div>
-      <div class="station-elem">Wendy Rivera</div>
-      <div class="station-elem">Xander Scott</div>
-      <div class="station-elem">Yara Turner</div>
-      <div class="station-elem">Zane Harris</div>
+      <div class="station-elem" data-name="Seungmin Kim" data-number="010-1234-5678">Seungmin Kim</div>
+      <div class="station-elem" data-name="Jiyeon Park" data-number="010-2345-6789">Jiyeon Park</div>
+      <div class="station-elem" data-name="Minho Lee" data-number="010-3456-7890">Minho Lee</div>
+      <div class="station-elem" data-name="Soomin Choi" data-number="010-4567-8901">Soomin Choi</div>
+      <div class="station-elem" data-name="Yujin Jung" data-number="010-5678-9012">Yujin Jung</div>
+      <div class="station-elem" data-name="Hyejin Kang" data-number="010-6789-0123">Hyejin Kang</div>
+      <div class="station-elem" data-name="Taehyung Kim" data-number="010-7890-1234">Taehyung Kim</div>
+      <div class="station-elem" data-name="Jinwoo Lee" data-number="010-8901-2345">Jinwoo Lee</div>
+      <div class="station-elem" data-name="Eunji Kim" data-number="010-9012-3456">Eunji Kim</div>
+      <div class="station-elem" data-name="Hyunwoo Park" data-number="010-0123-4567">Hyunwoo Park</div>
+      <div class="station-elem" data-name="Minji Choi" data-number="010-1234-5678">Minji Choi</div>
+      <div class="station-elem" data-name="Sungmin Kang" data-number="010-2345-6789">Sungmin Kang</div>
+      <div class="station-elem" data-name="Soyoung Lee" data-number="010-3456-7890">Soyoung Lee</div>
+      <div class="station-elem" data-name="Jihyun Kim" data-number="010-4567-8901">Jihyun Kim</div>
+      <div class="station-elem" data-name="Jinhee Park" data-number="010-5678-9012">Jinhee Park</div>
+      <div class="station-elem" data-name="Jaehyun Lee" data-number="010-6789-0123">Jaehyun Lee</div>
+      <div class="station-elem" data-name="Heejin Choi" data-number="010-7890-1234">Heejin Choi</div>
+      <div class="station-elem" data-name="Jiwon Kang" data-number="010-8901-2345">Jiwon Kang</div>
+      <div class="station-elem" data-name="Seojin Kim" data-number="010-9012-3456">Seojin Kim</div>
+      <div class="station-elem" data-name="Sangwoo Lee" data-number="010-0123-4567">Sangwoo Lee</div>
+      <div class="station-elem" data-name="Eunjung Park" data-number="010-1234-5678">Eunjung Park</div>
+      <div class="station-elem" data-name="Jongmin Choi" data-number="010-2345-6789">Jongmin Choi</div>
+      <div class="station-elem" data-name="Yunji Kang" data-number="010-3456-7890">Yunji Kang</div>
+      <div class="station-elem" data-name="Minseok Kim" data-number="010-4567-8901">Minseok Kim</div>
+      <div class="station-elem" data-name="Hyunjin Lee" data-number="010-5678-9012">Hyunjin Lee</div>
+      <div class="station-elem" data-name="Jiho Park" data-number="010-6789-0123">Jiho Park</div>
+      <div class="station-elem" data-name="Sooyoung Choi" data-number="010-7890-1234">Sooyoung Choi</div>
+      <div class="station-elem" data-name="Seunghee Kang" data-number="010-8901-2345">Seunghee Kang</div>
+      <div class="station-elem" data-name="Joon Kim" data-number="010-9012-3456">Joon Kim</div>
+      <div class="station-elem" data-name="Hyewon Lee" data-number="010-0123-4567">Hyewon Lee</div>
+      <div class="station-elem" data-name="Junho Park" data-number="010-1234-5678">Junho Park</div>
+      <div class="station-elem" data-name="Yuna Choi" data-number="010-2345-6789">Yuna Choi</div>
+
     </div>
   </div>
+
+  <script>
+    $(document).ready(function() {
+      // Function to check if the input is a valid phone number
+      function isValidPhoneNumber(phoneNumber) {
+        var phoneRegex = /^\d{3}-\d{4}-\d{4}$/; // Customize the regex pattern if needed
+        return phoneRegex.test(phoneNumber);
+      }
+  
+      // Event listener for the input field
+      $('.login-number').on('input', function() {
+        var phoneNumber = $(this).val();
+        var sendButton = $('.underbar-right');
+  
+        // Check if the input is a valid phone number
+        if (isValidPhoneNumber(phoneNumber)) {
+          sendButton.addClass('active'); // Add a class to enable the send button
+        } else {
+          sendButton.removeClass('active'); // Remove the class to disable the send button
+        }
+      });
+  
+      // Click event for selecting a contact
+      $('.station-elem').click(function() {
+        var selectedName = $(this).data('name');
+        var selectedNumber = $(this).data('number');
+        $('.contact-name').val(selectedName);
+        $('.login-number').val(selectedNumber);
+        $('.underbar-right').addClass('active'); // Enable the send button
+      });
+  
+      // Click event for the send button
+      $('.underbar-right').click(function() {
+        if ($(this).hasClass('active')) {
+          // Add your send functionality here
+          alert('Sending payment request...');
+        }
+      });
+    });
+  </script>
 </body>
+</html>
