@@ -46,7 +46,7 @@ $(document).ready(function() {
   $('.underbar-left').on('click', function() {
     window.location.href = 'main.html';
   });
-    $('.underbar-right').on('click', function() {
+  $('.underbar-right').on('click', function() {
       // ID가 있는지 확인하고, 있으면 제거, 없으면 추가
       if ($(this).attr('id') === 'normal') {
         localStorage.setItem('departure', departure);
@@ -54,4 +54,7 @@ $(document).ready(function() {
         window.location.href = 'passenger.html';
       }
     });
+  $('.common-header').on('click', function() {
+    $('.station-listback').animate({top: '100vh'}, 500);
+  });
 });
