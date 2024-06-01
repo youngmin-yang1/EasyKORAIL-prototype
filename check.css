@@ -61,3 +61,10 @@
   right: 30px;
   position: absolute;
 }
+
+.check-right-temp {
+  width: 350px;
+  text-align: right;
+  right: 30px;
+  position: absolute;
+}
