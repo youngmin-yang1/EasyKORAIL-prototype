@@ -92,6 +92,7 @@
   height: 60px;
 }
 
+
 .seat-middle {
   width: 110px; /* adjust width if necessary */
   height: 60px;
@@ -100,11 +101,9 @@
   font-family: "Inter";
   font-weight: 700;
   font-size: 24px;
-  border-radius: 10px;
-  border: 1px solid black; */ /* Remove this line */
-  box-sizing: border-box;
 }
 
 #flip {
   transform: scaleX(-1);
 }
+
