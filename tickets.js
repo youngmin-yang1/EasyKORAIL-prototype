@@ -5,6 +5,9 @@ $(document).ready(function() {
   let secondh = 50;
 
   let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
+  let reserveCount = 0;
+  let requestCount = 0;
+
   for (let i = 0; i < ticketlist.length; i += 1){
     if(ticketlist[i] === "") continue; 
     let date = ticketlist[i].date;
@@ -24,44 +27,32 @@ $(document).ready(function() {
     let request = parseInt(ticketlist[i].request);
     if (request == 0) {
       $('#reserve').append(newDiv);
+      reserveCount++;
       firsth += 100;
     }
     else if (request == 1) {
       let newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
       newDiv.append(newtimer);
       $('#request').append(newDiv);
+      requestCount++;
       secondh += 100;
     }
   }
 
-  let timerEndTime = localStorage.getItem('timerEndTime');
-  const timerElement = document.getElementsByClassName('ticket-timer')[0];
-  let timerInterval;
-  
-  startTimer(timerEndTime);
-  
-  function startTimer(endTime) {
-    clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-        const now = new Date().getTime();
-        const timeLeft = endTime - now;
-  
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            timerElement.textContent = '00:00';
-            localStorage.removeItem('timerEndTime');
-        } else {
-            const minutes = Math.floor(timeLeft / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            timerElement.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
-        }
-    }, 1000);
-  }
-  function formatTime(time) {
-    return time < 10 ? `0${time}` : time;
-  }
 
-  
+  // Append the default count beside each title
+  $('#reserve .uncommon-header').append(' (0)');
+  $('#request .uncommon-header').append(' (0)');
+
+  // Update the counts if there are elements in the lists
+  if (reserveCount > 0) $('#reserve .uncommon-header').text('Reserved (' + reserveCount + ')');
+  if (requestCount > 0) $('#request .uncommon-header').text('Payment requested (' + requestCount + ')');
+
+  // Store the counts in localStorage
+  localStorage.setItem('ticket-reserve', reserveCount);
+  localStorage.setItem('ticket-request', requestCount);
+
+
   $('#request').css({top: firsth});
   $('#cash').css({top: firsth + secondh});
 
@@ -69,10 +60,13 @@ $(document).ready(function() {
     let clickedElementId = $(this).attr("id");
     localStorage.setItem('ticketindex', clickedElementId);
     let request = parseInt(ticketlist[clickedElementId].request);
-    if(request == 0)window.location.href = 'ticket2.html';
+    if(request == 0) window.location.href = 'ticket2.html';
     else if(request == 1) window.location.href = 'ticket3.html';
   });
-      $('.underbar-left').on('click', function() {
-        window.location.href = 'main.html';
-      });
+
+
+  $('.underbar-left').on('click', function() {
+    window.location.href = 'main.html';
   });
+});
+

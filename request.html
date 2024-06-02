@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <!-- Add CSS file -->
   <link rel="stylesheet" href="main.css" />
@@ -7,6 +9,194 @@
   <script src="request.js"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width", initial-scale="1.0">
+  <style>
+    /* Add custom CSS for the readonly input */
+    .contact-name {
+      font-size: 1.2em; /* Change the font size to your desired value */
+      text-align: center; /* Center align the text */
+    }
+    .success-message {
+      text-align: center;
+      display: none;
+      position: fixed;
+      bottom: 550px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50; /* Match the checkmark color */
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+    .success-checkmark {
+      width: 80px;
+      height: 115px;
+      margin: 20px auto;
+
+      .check-icon {
+          width: 80px;
+          height: 80px;
+          position: relative;
+          border-radius: 50%;
+          box-sizing: content-box;
+          border: 4px solid #4CAF50;
+          
+          &::before {
+              top: 3px;
+              left: -2px;
+              width: 30px;
+              transform-origin: 100% 50%;
+              border-radius: 100px 0 0 100px;
+          }
+          
+          &::after {
+              top: 0;
+              left: 30px;
+              width: 60px;
+              transform-origin: 0 50%;
+              border-radius: 0 100px 100px 0;
+              animation: rotate-circle 4.25s ease-in;
+          }
+          
+          &::before, &::after {
+              content: '';
+              height: 100px;
+              position: absolute;
+              background: #f1f1f1;;
+              transform: rotate(-45deg);
+          }
+          
+          .icon-line {
+              height: 5px;
+              background-color: #4CAF50;
+              display: block;
+              border-radius: 2px;
+              position: absolute;
+              z-index: 10;
+              
+              &.line-tip {
+                  top: 46px;
+                  left: 14px;
+                  width: 25px;
+                  transform: rotate(45deg);
+                  animation: icon-line-tip 0.75s;
+              }
+              
+              &.line-long {
+                  top: 38px;
+                  right: 8px;
+                  width: 47px;
+                  transform: rotate(-45deg);
+                  animation: icon-line-long 0.75s;
+              }
+          }
+          
+          .icon-circle {
+              top: -4px;
+              left: -4px;
+              z-index: 10;
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              position: absolute;
+              box-sizing: content-box;
+              border: 4px solid rgba(76, 175, 80, .5);
+          }
+          
+          .icon-fix {
+              top: 8px;
+              width: 5px;
+              left: 26px;
+              z-index: 1;
+              height: 85px;
+              position: absolute;
+              transform: rotate(-45deg);
+              background-color: #f1f1f1;
+          }
+      }
+      .success-message {
+        text-align: center;
+        display: none;
+        position: fixed;
+        bottom: 200px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #a51313;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+  }
+  
+  @keyframes rotate-circle {
+      0% {
+          transform: rotate(-45deg);
+      }
+      5% {
+          transform: rotate(-45deg);
+      }
+      12% {
+          transform: rotate(-405deg);
+      }
+      100% {
+          transform: rotate(-405deg);
+      }
+  }
+  
+  @keyframes icon-line-tip {
+      0% {
+          width: 0;
+          left: 1px;
+          top: 19px;
+      }
+      54% {
+          width: 0;
+          left: 1px;
+          top: 19px;
+      }
+      70% {
+          width: 50px;
+          left: -8px;
+          top: 37px;
+      }
+      84% {
+          width: 17px;
+          left: 21px;
+          top: 48px;
+      }
+      100% {
+          width: 25px;
+          left: 14px;
+          top: 45px;
+      }
+  }
+  
+  @keyframes icon-line-long {
+      0% {
+          width: 0;
+          right: 46px;
+          top: 54px;
+      }
+      65% {
+          width: 0;
+          right: 46px;
+          top: 54px;
+      }
+      84% {
+          width: 55px;
+          right: 0px;
+          top: 35px;
+      }
+      100% {
+          width: 47px;
+          right: 8px;
+          top: 38px;
+      }
+  }
+  </style>
 </head>
 
 <body>
@@ -15,6 +205,7 @@
     <div class="login-info">Enter the phone number of the person to send the payment request to,
       or choose from your contacts.</div>
     <input type="tel" class="login-number" placeholder="000-0000-0000" maxlength="13">
+    <input type="text" class="contact-name" placeholder="Selected contact" readonly>
     <div class="login-send">open contacts</div>
   </div>
   <div class="underbar">
@@ -24,49 +215,96 @@
   <div class="station-listback">
     <div class="common-header" id="contact">My Contacts</div>
     <div class="station-list">
-      <div class="station-elem">Alice Johnson</div>
-      <div class="station-elem">Anna Cooper</div>
-      <div class="station-elem">Ben Collins</div>
-      <div class="station-elem">Bob Brown</div>
-      <div class="station-elem">Cara Davis</div>
-      <div class="station-elem">Carol White</div>
-      <div class="station-elem">Dan Evans</div>
-      <div class="station-elem">David Black</div>
-      <div class="station-elem">Ella Foster</div>
-      <div class="station-elem">Eve Green</div>
-      <div class="station-elem">Faker</div>
-      <div class="station-elem">Finn Garcia</div>
-      <div class="station-elem">Frank Harris</div>
-      <div class="station-elem">Gina Hill</div>
-      <div class="station-elem">Grace Lewis</div>
-      <div class="station-elem">Hank Young</div>
-      <div class="station-elem">Hugo Johnson</div>
-      <div class="station-elem">Iris Kelly</div>
-      <div class="station-elem">Ivy Clark</div>
-      <div class="station-elem">Jack Hall</div>
-      <div class="station-elem">Jake Lee</div>
-      <div class="station-elem">Jane Smith</div>
-      <div class="station-elem">John Doe</div>
-      <div class="station-elem">Kara Martin</div>
-      <div class="station-elem">Kim Scott</div>
-      <div class="station-elem">Leo King</div>
-      <div class="station-elem">Liam Nelson</div>
-      <div class="station-elem">Mia Walker</div>
-      <div class="station-elem">MooooooooooM</div>
-      <div class="station-elem">Nina Baker</div>
-      <div class="station-elem">Oscar Allen</div>
-      <div class="station-elem">Pam Lee</div>
-      <div class="station-elem">Quinn Wright</div>
-      <div class="station-elem">Ruby Adams</div>
-      <div class="station-elem">Sam Carter</div>
-      <div class="station-elem">Songlasses</div>
-      <div class="station-elem">Tina Miller</div>
-      <div class="station-elem">Uma Nelson</div>
-      <div class="station-elem">Vince Parker</div>
-      <div class="station-elem">Wendy Rivera</div>
-      <div class="station-elem">Xander Scott</div>
-      <div class="station-elem">Yara Turner</div>
-      <div class="station-elem">Zane Harris</div>
+      <div class="station-elem" data-name="Seungmin Kim" data-number="010-1234-5678">Seungmin Kim</div>
+      <div class="station-elem" data-name="Jiyeon Park" data-number="010-2345-6789">Jiyeon Park</div>
+      <div class="station-elem" data-name="Minho Lee" data-number="010-3456-7890">Minho Lee</div>
+      <div class="station-elem" data-name="Soomin Choi" data-number="010-4567-8901">Soomin Choi</div>
+      <div class="station-elem" data-name="Yujin Jung" data-number="010-5678-9012">Yujin Jung</div>
+      <div class="station-elem" data-name="Hyejin Kang" data-number="010-6789-0123">Hyejin Kang</div>
+      <div class="station-elem" data-name="Taehyung Kim" data-number="010-7890-1234">Taehyung Kim</div>
+      <div class="station-elem" data-name="Jinwoo Lee" data-number="010-8901-2345">Jinwoo Lee</div>
+      <div class="station-elem" data-name="Eunji Kim" data-number="010-9012-3456">Eunji Kim</div>
+      <div class="station-elem" data-name="Hyunwoo Park" data-number="010-0123-4567">Hyunwoo Park</div>
+      <div class="station-elem" data-name="Minji Choi" data-number="010-1234-5678">Minji Choi</div>
+      <div class="station-elem" data-name="Sungmin Kang" data-number="010-2345-6789">Sungmin Kang</div>
+      <div class="station-elem" data-name="Soyoung Lee" data-number="010-3456-7890">Soyoung Lee</div>
+      <div class="station-elem" data-name="Jihyun Kim" data-number="010-4567-8901">Jihyun Kim</div>
+      <div class="station-elem" data-name="Jinhee Park" data-number="010-5678-9012">Jinhee Park</div>
+      <div class="station-elem" data-name="Jaehyun Lee" data-number="010-6789-0123">Jaehyun Lee</div>
+      <div class="station-elem" data-name="Heejin Choi" data-number="010-7890-1234">Heejin Choi</div>
+      <div class="station-elem" data-name="Jiwon Kang" data-number="010-8901-2345">Jiwon Kang</div>
+      <div class="station-elem" data-name="Seojin Kim" data-number="010-9012-3456">Seojin Kim</div>
+      <div class="station-elem" data-name="Sangwoo Lee" data-number="010-0123-4567">Sangwoo Lee</div>
+      <div class="station-elem" data-name="Eunjung Park" data-number="010-1234-5678">Eunjung Park</div>
+      <div class="station-elem" data-name="Jongmin Choi" data-number="010-2345-6789">Jongmin Choi</div>
+      <div class="station-elem" data-name="Yunji Kang" data-number="010-3456-7890">Yunji Kang</div>
+      <div class="station-elem" data-name="Minseok Kim" data-number="010-4567-8901">Minseok Kim</div>
+      <div class="station-elem" data-name="Hyunjin Lee" data-number="010-5678-9012">Hyunjin Lee</div>
+      <div class="station-elem" data-name="Jiho Park" data-number="010-6789-0123">Jiho Park</div>
+      <div class="station-elem" data-name="Sooyoung Choi" data-number="010-7890-1234">Sooyoung Choi</div>
+      <div class="station-elem" data-name="Seunghee Kang" data-number="010-8901-2345">Seunghee Kang</div>
+      <div class="station-elem" data-name="Joon Kim" data-number="010-9012-3456">Joon Kim</div>
+      <div class="station-elem" data-name="Hyewon Lee" data-number="010-0123-4567">Hyewon Lee</div>
+      <div class="station-elem" data-name="Junho Park" data-number="010-1234-5678">Junho Park</div>
+      <div class="station-elem" data-name="Yuna Choi" data-number="010-2345-6789">Yuna Choi</div>
     </div>
   </div>
-</body>
+    <!-- Success checkmark animation -->
+  <div class="success-checkmark">
+    <div class="check-icon">
+      <span class="icon-line line-tip"></span>
+      <span class="icon-line line-long"></span>
+      <div class="icon-circle"></div>
+      <div class="icon-fix"></div>
+    </div>
+  </div>
+  <div class="success-message">Payment request has been sent successfully!</div>
+   <!-- Add audio element -->
+   <audio id="success-audio" src="audio/success.m4a"></audio>
+
+
+
+</body> 
+
+<script>
+  $(document).ready(function() {
+    // Initially hide the animation
+    $(".success-checkmark").hide();
+    $(".success-message").hide();
+
+    $('.login-send').on('click', function() {
+      $('.station-listback').toggleClass('show');
+    });
+
+    $('.station-elem').on('click', function() {
+      var name = $(this).data('name');
+      var number = $(this).data('number');
+      $('.contact-name').val(name);
+      $('.login-number').val(number);
+      $('.station-listback').removeClass('show');
+    });
+
+    $('.underbar-left').on('click', function() {
+      // Clear input fields when cancel is clicked
+      $('.contact-name').val('');
+      $('.login-number').val('');
+    });
+
+    $('.underbar-right').on('click', function() {
+      if ($('.login-number').val() === '') {
+        alert('Please enter a phone number or select a contact.');
+      } else {
+        // Show the animation after form submission
+        $(".success-checkmark").fadeIn();
+        $(".success-message").fadeIn();
+        document.getElementById('success-audio').play();
+        setTimeout(function() {
+          // Hide the animation again after 2 seconds (2000ms)
+          $(".success-checkmark").fadeOut();
+          $(".success-message").fadeOut();
+        }, 3300);
+      }
+    });
+  });
+</script>
+</html>
