@@ -117,6 +117,10 @@ $(document).ready(function() {
       localStorage.setItem('ticket-reserve', tres);
       let treq = parseInt(localStorage.getItem('ticket-request')) + 1;
       localStorage.setItem('ticket-request', treq);
+      const now = new Date().getTime();
+      const timerEndTime = now + 10 * 60 * 1000;
+      localStorage.setItem('timerEndTime', timerEndTime);
+      // 타이머
       window.location.href = 'tickets.html';
     }
   });
