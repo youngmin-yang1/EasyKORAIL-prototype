@@ -84,6 +84,7 @@ $(document).ready(function() {
         localStorage.setItem('tutomain', first);
         localStorage.setItem('tutores', first);
         localStorage.setItem('tutotic', first);
+        localStorage.setItem('totalcount', -1);
         window.location.href = 'main.html';
       } else {
         $('.login-code').val('');
