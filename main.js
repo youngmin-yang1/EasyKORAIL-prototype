@@ -2,6 +2,7 @@ $(document).ready(function() {
     let phone = localStorage.getItem('my-number');
     let tres = parseInt(localStorage.getItem('ticket-reserve'));
     let treq = parseInt(localStorage.getItem('ticket-request'));
+    let tpur = parseInt(localStorage.getItem('ticket-purchase'));
     $('.reservation-progress').text(phone);
     let totaln = parseInt(localStorage.getItem('totalcount'));
     let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));

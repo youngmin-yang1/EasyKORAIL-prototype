@@ -3,10 +3,12 @@ $(document).ready(function() {
   $('.ticket-body').css({top: 55, height: windowHeight - 120});
   let firsth = 50;
   let secondh = 50;
+  let thirdh = 50;
 
   let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
   let reserveCount = 0;
   let requestCount = 0;
+  let purchaseCount = 0;
   let timerIntervals = {}; // 각 타이머의 interval을 저장할 객체
 
   for (let i = 0; i < ticketlist.length; i += 1){
@@ -49,6 +51,10 @@ $(document).ready(function() {
       const timerElement = document.getElementById(`timer${i}`);
       startTimer(timerElement,storedEndTime, i);
     }
+    else if (request == 2) {
+      // Write Payment here
+      thirdh += 100;
+    }
   }
 
   function startTimer(timerElem, endTime, timerId) {
@@ -78,18 +84,22 @@ $(document).ready(function() {
   // Append the default count beside each title
   $('#reserve .common-header').append(' (0)');
   $('#request .common-header').append(' (0)');
+  $('#purchase .common-header').append(' (0)');
 
   // Update the counts if there are elements in the lists
   if (reserveCount > 0) $('#reserve .common-header').text('Reserved (' + reserveCount + ')');
   if (requestCount > 0) $('#request .common-header').text('Payment requested (' + requestCount + ')');
+  if (purchaseCount > 0) $('#purchase .common-header').text('Purchase requested (' + purchaseCount + ')');
 
   // Store the counts in localStorage
   localStorage.setItem('ticket-reserve', reserveCount);
   localStorage.setItem('ticket-request', requestCount);
+  localStorage.setItem('ticket-purchase', purchaseCount);
 
 
   $('#request').css({top: firsth});
   $('#cash').css({top: firsth + secondh});
+  $('#purchase').css({top: firsth + secondh + thirdh});
 
   $('.ticket-elem').on('click', function() {
     let clickedElementId = $(this).attr("id");
@@ -97,6 +107,7 @@ $(document).ready(function() {
     let request = parseInt(ticketlist[clickedElementId].request);
     if(request == 0) window.location.href = 'ticket2.html';
     else if(request == 1) window.location.href = 'ticket3.html';
+    else if(request == 2) window.location.href = 'ticket3.html'; // Make window move here
   });
   $('.ticket-elem2').on('click', function() {
     let clickedElementId = $(this).attr("id");
