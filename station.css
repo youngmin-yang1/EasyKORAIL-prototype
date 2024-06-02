@@ -95,7 +95,9 @@
   text-align: left;
   vertical-align: center;
   background-color: #FFFFFF;
+
   color : #000000;
+
   box-sizing: border-box;
   letter-spacing: 2px;
   border-bottom: 3px solid black;
@@ -106,3 +108,4 @@
 .reservation-progress{
   color: #77DD77
 }
+

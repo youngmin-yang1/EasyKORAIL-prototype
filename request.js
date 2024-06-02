@@ -128,4 +128,7 @@ $(document).ready(function() {
       }, 3000);
     }
   });
+  $('.common-header').on('click', function() {
+    $('.station-listback').animate({top: '100vh'}, 500);
+  });
 });
