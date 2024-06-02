@@ -16,7 +16,7 @@ $(document).ready(function() {
     let arr = ticketlist[i].arr;
     let newDiv = $('<div></div>').addClass('ticket-elem');
     let newtext = dep + " -> " + arr;
-    let newleft = $('<div></div>').addClass('ticket-left').text(date + " " + dept);
+    let newleft = $('<div></div>').addClass('ticket-left').text(date + " " + dept);    
     let newright = $('<div></div>').addClass('ticket-right').text(newtext);
     if (newtext.length > 25) newright.css({'font-size': '18px'});
     else if (newtext.length > 23) newright.css({'font-size': '20px'});
@@ -31,11 +31,14 @@ $(document).ready(function() {
       firsth += 100;
     }
     else if (request == 1) {
+      let newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
+      newDiv.append(newtimer);
       $('#request').append(newDiv);
       requestCount++;
       secondh += 100;
     }
   }
+
 
   // Append the default count beside each title
   $('#reserve .uncommon-header').append(' (0)');
@@ -49,6 +52,7 @@ $(document).ready(function() {
   localStorage.setItem('ticket-reserve', reserveCount);
   localStorage.setItem('ticket-request', requestCount);
 
+
   $('#request').css({top: firsth});
   $('#cash').css({top: firsth + secondh});
 
@@ -60,7 +64,9 @@ $(document).ready(function() {
     else if(request == 1) window.location.href = 'ticket3.html';
   });
 
+
   $('.underbar-left').on('click', function() {
     window.location.href = 'main.html';
   });
 });
+
