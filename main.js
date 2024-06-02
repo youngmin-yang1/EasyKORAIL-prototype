@@ -11,9 +11,18 @@ $(document).ready(function() {
     }
     else if (tres > 0) {
       let text = "";
-      if (tres == 1) text = "1 ticket reserved";
-      else text = tres + " tickets reserved"
+      let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
+      if (tres == 1){
+        text = "1 ticket reserved";
+      }
+      else {
+        text = tres + " tickets reserved" ;
+      }
+      recent = ticketlist[0].date +" : "+ ticketlist[0].dep + " -> " + ticketlist[0].arr;
       $('#info').text(text);
+      $('#recent-info').css({"visibility":"visible"});
+      $('#recent-info').text(recent);
+      $('#recent-info').css({"border":"3px solid"});
     }
     else {
       $('#info').text("No ticket reserved");
@@ -34,8 +43,14 @@ $(document).ready(function() {
       $('#C').on('click', function() {
         window.location.href = 'tickets.html';
       });
-      $('.tuto-black').on('click', function() {
-        $('.tuto-black').addClass('hidden');
-      $('.tuto-text').addClass('hidden');
-      });
+
+    $('#recent-info').on('click', function() {
+      window.location.href = 'recentticket.html';
+    });
+
+    $('.tuto-black').on('click', function() {
+      $('.tuto-black').addClass('hidden');
+    $('.tuto-text').addClass('hidden');
+    });
+
   });

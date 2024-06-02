@@ -25,13 +25,13 @@ $(document).ready(function() {
   $('#departure').on('click', function() {
     // ID가 있는지 확인하고, 있으면 제거, 없으면 추가
     num = 0;
-    $('.common-header').text('Departure Station');
+    $('.common-header').text(' < Departure Station');
     $('.station-listback').animate({top: 0}, 500);
   });
   $('#arrival').on('click', function() {
     // ID가 있는지 확인하고, 있으면 제거, 없으면 추가
     num = 1;
-    $('.common-header').text('Arrival Station');
+    $('.common-header').text(' < Arrival Station');
     $('.station-listback').animate({top: 0}, 500);
   });
 
