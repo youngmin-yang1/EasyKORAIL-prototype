@@ -32,6 +32,7 @@ $(document).ready(function() {
       localStorage.setItem('ticket-reserve', tres);
       let treq = parseInt(localStorage.getItem('ticket-request')) - 1;
       localStorage.setItem('ticket-request', treq);
+      localStorage.removeItem(`timerEndTime${index}`);
       window.location.href = 'tickets.html';
     });
       $('.underbar-left').on('click', function() {
@@ -42,6 +43,7 @@ $(document).ready(function() {
         localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
         let treq = parseInt(localStorage.getItem('ticket-request')) - 1;
       localStorage.setItem('ticket-request', treq);
+      localStorage.removeItem(`timerEndTime${index}`);
         window.location.href = 'tickets.html';
       });
   });

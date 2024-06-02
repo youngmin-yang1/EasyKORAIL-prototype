@@ -130,8 +130,10 @@ $(document).ready(function() {
           $(".success-checkmark").fadeOut();
           $(".success-message").fadeOut();
         }, 3300);
-      
-      
+      // 타이머
+      let now = new Date().getTime();
+      let timerEndTime = now + 10 * 60 * 1000;
+      localStorage.setItem('timerEndTime', timerEndTime);  
       // Delay the redirect by 3 seconds
       setTimeout(function () {
         window.location.href = 'tickets.html';
