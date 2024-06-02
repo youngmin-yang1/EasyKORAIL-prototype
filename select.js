@@ -7,10 +7,7 @@ $(document).ready(function() {
     let audioElement = $('#ada');
     $(".success-checkmark").fadeIn();
     $(".success-message").fadeIn();
-    audioElement.play().catch(function(error) {
-      console.log("자동 재생이 실패했습니다: 사용자 상호 작용이 필요합니다.", error);
-  });
-  }, 3000);
+      document.getElementById('success-audio').play();
   setTimeout(function() {
     $('.hidden').removeClass('hidden');
 }, 1500);
