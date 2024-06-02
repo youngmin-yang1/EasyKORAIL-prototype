@@ -12,11 +12,13 @@ $(document).ready(function() {
     else if (tres > 0) {
       let text = "";
       let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
-      if (tres == 1) text = "1 ticket reserved";
+      if (tres == 1){
+        text = "1 ticket reserved";
+      }
       else {
         text = tres + " tickets reserved" ;
-        recent = ticketlist[0].date +" : "+ ticketlist[0].dep + " -> " + ticketlist[0].arr;
       }
+      recent = ticketlist[0].date +" : "+ ticketlist[0].dep + " -> " + ticketlist[0].arr;
       $('#info').text(text);
       $('#recent-info').css({"visibility":"visible"});
       $('#recent-info').text(recent);
