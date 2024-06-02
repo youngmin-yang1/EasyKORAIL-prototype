@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('.void').addClass('hidden');
   let windowHeight = $(window).height();
-  $('.tickettable').css({'top': '50px', height: windowHeight - 178});
+  $('.tickettable').css({'top': '50px', height: windowHeight - 238});
   let index = parseInt(localStorage.getItem('ticketindex'));
   let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
   $('#common').css({'background-color': '#D9D9D9'})
@@ -27,7 +27,7 @@ $(document).ready(function() {
   $('#risk1').children('.check-right').css({'font-size': ticketlist[index].psize});
   $('.check-elem2').children('.check-right').css({'top': '42px', 'line-height': '40px'});
   $('.check-elem3').children('.check-right').css({'top': '45px', 'line-height': '37px'});
-    $('.ticket-request').on('click', function() {
+    $('#D').on('click', function() {
       window.location.href = 'request.html';
     });
     $('#Q').on('click', function() {
