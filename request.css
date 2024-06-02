@@ -61,7 +61,7 @@
   letter-spacing: 2px;
   box-sizing: border-box;
   border-radius: 40px;
-  transform: translate(45px, 0);
+  /*transform: translate(45px, 0);*/
 }
 
 .station-listback {
