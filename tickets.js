@@ -14,6 +14,7 @@ $(document).ready(function() {
     let newDiv = $('<div></div>').addClass('ticket-elem');
     let newtext = dep + " -> " + arr;
     let newleft = $('<div></div>').addClass('ticket-left').text(date + " " + dept);
+    let newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
     let newright = $('<div></div>').addClass('ticket-right').text(newtext);
     if (newtext.length > 25) newright.css({'font-size': '18px'});
     else if (newtext.length > 23) newright.css({'font-size': '20px'});
@@ -31,6 +32,35 @@ $(document).ready(function() {
       secondh += 100;
     }
   }
+
+  let timerEndTime = localStorage.getItem('timerEndTime');
+  const timerElement = document.getElementsByClassName('ticket-timer')[0];
+  let timerInterval;
+
+  startTimer(timerEndTime);
+
+  function startTimer(endTime) {
+    clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+        const now = new Date().getTime();
+        const timeLeft = endTime - now;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerElement.textContent = '00:00';
+            localStorage.removeItem('timerEndTime');
+        } else {
+            const minutes = Math.floor(timeLeft / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            timerElement.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+        }
+    }, 1000);
+  }
+  function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
+  }
+
+  
   $('#request').css({top: firsth});
   $('#cash').css({top: firsth + secondh});
 
