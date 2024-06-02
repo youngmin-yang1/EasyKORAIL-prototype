@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  let windowHeight = $(window).height();
+  $('.tickettable').css({'top': '50px', height: windowHeight - 178});
   let index = parseInt(localStorage.getItem('ticketindex'));
   let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
   $('#common').css({'background-color': '#D9D9D9'})
@@ -30,6 +32,7 @@ $(document).ready(function() {
       localStorage.setItem('ticket-reserve', tres);
       let treq = parseInt(localStorage.getItem('ticket-request')) - 1;
       localStorage.setItem('ticket-request', treq);
+      localStorage.removeItem(`timerEndTime${index}`);
       window.location.href = 'tickets.html';
     });
       $('.underbar-left').on('click', function() {
@@ -40,6 +43,7 @@ $(document).ready(function() {
         localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
         let treq = parseInt(localStorage.getItem('ticket-request')) - 1;
       localStorage.setItem('ticket-request', treq);
+      localStorage.removeItem(`timerEndTime${index}`);
         window.location.href = 'tickets.html';
       });
   });

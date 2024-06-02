@@ -80,6 +80,11 @@ $(document).ready(function() {
         localStorage.setItem('ticket-request', '0');
         let tickets = [];
         localStorage.setItem('ticketlist', JSON.stringify(tickets));
+        let first = "AAA"
+        localStorage.setItem('tutomain', first);
+        localStorage.setItem('tutores', first);
+        localStorage.setItem('tutotic', first);
+        localStorage.setItem('totalcount', -1);
         window.location.href = 'main.html';
       } else {
         $('.login-code').val('');
