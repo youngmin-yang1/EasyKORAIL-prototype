@@ -17,7 +17,6 @@ $(document).ready(function() {
   $('#adult').text(adult);
   $('#child').text(child);
   $('#senior').text(senior);
-  $('.underbar-right').attr('id', 'normal');
   $('.passenger-minus').on('click', function() {
     // ID가 있는지 확인하고, 있으면 제거, 없으면 추가
     if ($(this).attr('id') === 'am') {
