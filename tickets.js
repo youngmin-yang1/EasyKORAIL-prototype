@@ -13,14 +13,12 @@ $(document).ready(function() {
     let arr = ticketlist[i].arr;
     let newDiv = $('<div></div>').addClass('ticket-elem');
     let newtext = dep + " -> " + arr;
-    let newleft = $('<div></div>').addClass('ticket-left').text(date + " " + dept);
-    let newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
+    let newleft = $('<div></div>').addClass('ticket-left').text(date + " " + dept);    
     let newright = $('<div></div>').addClass('ticket-right').text(newtext);
     if (newtext.length > 25) newright.css({'font-size': '18px'});
     else if (newtext.length > 23) newright.css({'font-size': '20px'});
     else if (newtext.length > 22) newright.css({'font-size': '22px'});
     newDiv.append(newleft);
-    newDiv.append(newtimer);
     newDiv.append(newright);
     newDiv.attr('id', i);
     let request = parseInt(ticketlist[i].request);
@@ -29,6 +27,8 @@ $(document).ready(function() {
       firsth += 100;
     }
     else if (request == 1) {
+      let newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
+      newDiv.append(newtimer);
       $('#request').append(newDiv);
       secondh += 100;
     }
