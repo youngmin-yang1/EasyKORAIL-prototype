@@ -34,7 +34,7 @@ $(document).ready(function() {
   }
 
   let timerEndTime = localStorage.getItem('timerEndTime');
-  const timerElement = document.getElementsByClassName('ticket-timer')[0];
+  let timerElement = document.getElementsByClassName('ticket-timer')[0];
   let timerInterval;
   
   startTimer(timerEndTime);
