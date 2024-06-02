@@ -128,4 +128,7 @@ $(document).ready(function() {
         window.location.href = 'time.html';
       }
     });
+    $('#homebutton').on('click',function(){
+      window.location.href = 'main.html';
+    });
 });

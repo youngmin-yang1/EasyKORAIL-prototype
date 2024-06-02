@@ -83,4 +83,7 @@ $(document).ready(function() {
         window.location.href = 'date.html';
       }
     });
+    $('#homebutton').on('click',function(){
+      window.location.href = 'main.html';
+    });
 });

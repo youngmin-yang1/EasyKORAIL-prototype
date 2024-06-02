@@ -68,4 +68,7 @@ $(document).ready(function() {
     $('.tuto-black').addClass('hidden');
   $('.tuto-text').addClass('hidden');
   });
+  $('#homebutton').on('click',function(){
+    window.location.href = 'main.html';
+  });
 });

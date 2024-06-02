@@ -135,4 +135,7 @@ $(document).ready(function() {
         window.location.href = 'seat.html';
       }
     });
+    $('#homebutton').on('click',function(){
+      window.location.href = 'main.html';
+    });
 });
