@@ -37,6 +37,5 @@ $(document).ready(function() {
       });
     $('#recent-info').on('click', function() {
       window.location.href = 'recentticket.html';
-      //$('#rescent-info').text("wtf");
     });
   });

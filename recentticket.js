@@ -51,7 +51,7 @@ $(document).ready(function() {
     localStorage.setItem('ticket-request', requestCount);
     
     $('#request').css({top: 300});
-    $('#cash').css({top: 600});
+    $('#train-inf').css({top: 600});
     $('#deparr').text(" - "+ticketlist[0].dep + " -> " + ticketlist[0].arr);
     $('#time').text(" - "+ticketlist[0].date);
     $('#seat').text(" - "+ticketlist[0].tnum + " : " + ticketlist[0].seats);
@@ -61,6 +61,9 @@ $(document).ready(function() {
     });
     $('#bigmap').on('click', function() {
         $('#bigmap').css({'visibility': 'hidden'});
+    });
+    $('#train-inf').on('click', function() {
+        window.location.href = 'tickets.html';
     });
     $('.underbar-left').on('click', function() {
       window.location.href = 'main.html';
