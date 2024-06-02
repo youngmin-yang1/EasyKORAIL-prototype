@@ -45,6 +45,8 @@ const contacts = {
 };
 
 $(document).ready(function() {
+  $(".success-checkmark").hide();
+    $(".success-message").hide();
   let windowHeight = $(window).height();
   let table = $('.station-list');
   let tableheight = windowHeight - 50;

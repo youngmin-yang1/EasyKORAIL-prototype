@@ -20,7 +20,7 @@ $(document).ready(function() {
     let newright = $('<div></div>').addClass('ticket-right').text(newtext);
     if (newtext.length > 25) newright.css({'font-size': '18px'});
     else if (newtext.length > 23) newright.css({'font-size': '20px'});
-    else if (newtext.length > 22) newright.css({'font-size': '22px'});
+    else if (newtext.length > 21) newright.css({'font-size': '22px'});
     newright.css({'top': '50px'});
     newDiv.append(newleft);
     newDiv.append(newright);

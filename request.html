@@ -269,12 +269,6 @@
 <script>
   $(document).ready(function() {
     // Initially hide the animation
-    $(".success-checkmark").hide();
-    $(".success-message").hide();
-
-    $('.login-send').on('click', function() {
-      $('.station-listback').toggleClass('show');
-    });
 
     $('.station-elem').on('click', function() {
       var name = $(this).data('name');
@@ -283,7 +277,6 @@
       $('.login-number').val(number);
       $('.station-listback').removeClass('show');
     });
-
 
   });
 </script>
