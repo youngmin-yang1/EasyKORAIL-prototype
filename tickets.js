@@ -20,6 +20,7 @@ $(document).ready(function() {
     else if (newtext.length > 23) newright.css({'font-size': '20px'});
     else if (newtext.length > 22) newright.css({'font-size': '22px'});
     newDiv.append(newleft);
+    newDiv.append(newtimer);
     newDiv.append(newright);
     newDiv.attr('id', i);
     let request = parseInt(ticketlist[i].request);
@@ -34,7 +35,7 @@ $(document).ready(function() {
   }
 
   let timerEndTime = localStorage.getItem('timerEndTime');
-  let timerElement = document.getElementsByClassName('ticket-timer')[0];
+  const timerElement = document.getElementsByClassName('ticket-timer')[0];
   let timerInterval;
   
   startTimer(timerEndTime);
