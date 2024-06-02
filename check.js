@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  let windowHeight = $(window).height();
+  $('.tickettable').css({'top': '50px', height: windowHeight - 117});
   $('#common').css({'background-color': '#D9D9D9'})
   let departure = localStorage.getItem('departure');
   $('#departure').text(departure);
