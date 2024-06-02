@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css?family=Inter:400,500|Noto+Sans:400,500");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap");
+
+.login-body {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 가로 중앙 정렬 */
+  align-items: center;
+  gap: 20px;
+}
+
+.login-info {
+  width: 390px;
+  height: 130px;
+  border-bottom: 1px solid black;
+  position: relative;
+  top: 40px;
+  font-family: "Inter";
+  font-weight: 800;
+  font-size: 28px;
+  padding-left: 20px;
+  line-height: 40px;
+  text-align: center;
+  vertical-align: center;
+  letter-spacing: 2px;
+  box-sizing: border-box;
+}
+
+.login-number {
+  width: 340px;
+  height: 50px;
+  border: 3px solid black;
+  position: relative;
+  font-family: "Inter";
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: center;
+  letter-spacing: 5px;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+.login-send {
+  width: 250px;
+  height: 50px;
+  border: 1px solid black;
+  background-color: #332D2D;
+  color: white;
+  position: relative;
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: center;
+  vertical-align: center;
+  letter-spacing: 2px;
+  box-sizing: border-box;
+  border-radius: 40px;
+  /*transform: translate(45px, 0);*/
+}
+
+.station-listback {
+  width: 100vw;
+  height: 100vh;
+  background-color: #F1F1F1;
+  top: 100vh;
+  position: absolute;
+  font-family: "Inter";
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 105px;
+    text-align: center;
+    vertical-align: center;
+  z-index: 95;
+}
+
+.station-list {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
+}
+
+.station-elem {
+  width: 100%;
+  height: 50px;
+  font-family: "Inter";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 50px;
+  text-align: left;
+  vertical-align: center;
+  background-color: #D9D9D9;
+  box-sizing: border-box;
+  letter-spacing: 2px;
+  border-bottom: 1px solid black;
+  padding-left: 30px;
+}
+
+
+.message-box {
+  position: fixed;
+  text-align : left;
+  vertical-align : center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  opacity : 0.9;
+  color : #ffffff;
+  background-color: #313030;
+  border: 2px solid #333;
+  border-radius: 10px;
+  padding: 32px;
+  font-size: 24px;
+  text-align: center;
+  z-index: 9999;
+}
+
+.message-content {
+  overflow: auto;
+}

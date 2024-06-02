@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="card.css" />
+  <link rel="stylesheet" href="payment.css" />
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Additional custom CSS for the readonly input */
+    .contact-name {
+      font-size: 1.2em;
+      text-align: center;
+    }
+    .success-message {
+      text-align: center;
+      display: none;
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .success-checkmark {
+      text-align: center;
+      display: none;
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+      color: white;
+      background-color: #f1f1f1;
+      padding: 27px 27px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+    .success-checkmark {
+      top: 120px;
+    }
+    .success-message {
+      top: 280px;
+      color : white;
+      background-color: #4CAF50;
+    }
+    .success-checkmark .check-icon {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      border-radius: 50%;
+      box-sizing: content-box;
+      border: 4px solid #4CAF50;
+      margin: 0 auto;
+    }
+    .check-icon::before, .check-icon::after {
+      content: '';
+      height: 100px;
+      position: absolute;
+      background: #f1f1f1;
+      transform: rotate(-45deg);
+    }
+    .check-icon::before {
+      top: 3px;
+      left: -2px;
+      width: 30px;
+      transform-origin: 100% 50%;
+      border-radius: 100px 0 0 100px;
+    }
+    .check-icon::after {
+      top: 0;
+      left: 30px;
+      width: 60px;
+      transform-origin: 0 50%;
+      border-radius: 0 100px 100px 0;
+      animation: rotate-circle 4.25s ease-in;
+    }
+    .check-icon .icon-line {
+      height: 5px;
+      background-color: #4CAF50;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      z-index: 10;
+    }
+    .icon-line.line-tip {
+      top: 46px;
+      left: 14px;
+      width: 25px;
+      transform: rotate(45deg);
+      animation: icon-line-tip 0.75s;
+    }
+    .icon-line.line-long {
+      top: 38px;
+      right: 8px;
+      width: 47px;
+      transform: rotate(-45deg);
+      animation: icon-line-long 0.75s;
+    }
+    .icon-circle {
+      top: -4px;
+      left: -4px;
+      z-index: 10;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: absolute;
+      box-sizing: content-box;
+      border: 4px solid rgba(76, 175, 80, .5);
+    }
+    .icon-fix {
+      top: 8px;
+      width: 5px;
+      left: 26px;
+      z-index: 1;
+      height: 85px;
+      position: absolute;
+      transform: rotate(-45deg);
+      background-color: #f1f1f1;
+    }
+    @keyframes rotate-circle {
+      0% {
+        transform: rotate(-45deg);
+      }
+      5% {
+        transform: rotate(-45deg);
+      }
+      12% {
+        transform: rotate(-405deg);
+      }
+      100% {
+        transform: rotate(-405deg);
+      }
+    }
+    @keyframes icon-line-tip {
+      0% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+      }
+      54% {
+        width: 0;
+        left: 1px;
+        top: 19px;
+      }
+      70% {
+        width: 50px;
+        left: -8px;
+        top: 37px;
+      }
+      84% {
+        width: 17px;
+        left: 21px;
+        top: 48px;
+      }
+      100% {
+        width: 25px;
+        left: 14px;
+        top: 45px;
+      }
+    }
+    @keyframes icon-line-long {
+      0% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+      }
+      65% {
+        width: 0;
+        right: 46px;
+        top: 54px;
+      }
+      84% {
+        width: 55px;
+        right: 0px;
+        top: 35px;
+      }
+      100% {
+        width: 47px;
+        right: 8px;
+        top: 38px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="common-header">Payment</div>
+    <div id="message-box" class="message-box">
+      <div class="message-content">
+        * Alert : Please proceed with the payment in the ticket list. It is temporarily reserved until payment.
+      </div>
+    </div>
+    <div class="login-body">
+      <div class="login-info"> Credit Card Payment</div>
+        <div class="wrapper" id="app">
+          <div class="card-form">
+            <div class="card-list">
+              <div class="card-item" v-bind:class="{ '-active' : isCardFlipped }">
+                <div class="card-item__side -front">
+                  <div class="card-item__focus" v-bind:class="{'-active' : focusElementStyle }" v-bind:style="focusElementStyle" ref="focusElement"></div>
+                  <div class="card-item__cover">
+                    <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
+                  </div>
+        
+                  <div class="card-item__wrapper">
+                    <div class="card-item__top">
+                      <img src="https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/chip.png" class="card-item__chip">
+                      <div class="card-item__type">
+                        <transition name="slide-fade-up">
+                          <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" v-bind:key="getCardType" alt="" class="card-item__typeImg">
+                        </transition>
+                      </div>
+                    </div>
+                    <label for="cardNumber" class="card-item__number" ref="cardNumber">
+                      <template v-if="getCardType === 'amex'">
+                        <span v-for="(n, $index) in amexCardMask" :key="$index">
+                          <transition name="slide-fade-up">
+                            <div class="card-item__numberItem" v-if="$index > 5 && $index < 14 && cardNumber.length > $index && n.trim() !== ''">*</div>
+                            <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index" v-else-if="cardNumber.length > $index">
+                              {{cardNumber[$index]}}
+                            </div>
+                            <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else :key="$index + 1">{{n}}</div>
+                          </transition>
+                        </span>
+                      </template>
+        
+                      <template v-else>
+                        <span v-for="(n, $index) in otherCardMask" :key="$index">
+                          <transition name="slide-fade-up">
+                            <div class="card-item__numberItem" v-if="$index > 5 && $index < 15 && cardNumber.length > $index && n.trim() !== ''">*</div>
+                            <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" :key="$index" v-else-if="cardNumber.length > $index">
+                              {{cardNumber[$index]}}
+                            </div>
+                            <div class="card-item__numberItem" :class="{ '-active' : n.trim() === '' }" v-else :key="$index + 1">{{n}}</div>
+                          </transition>
+                        </span>
+                      </template>
+                    </label>
+                    <div class="card-item__content">
+                      <label for="cardName" class="card-item__info" ref="cardName">
+                        <div class="card-item__holder">Card Holder</div>
+                        <transition name="slide-fade-up">
+                          <div class="card-item__name" v-if="cardName.length" key="1">
+                            <transition-group name="slide-fade-right">
+                              <span class="card-item__nameItem" v-for="(n, $index) in cardName.replace(/\s\s+/g, ' ')" v-if="$index === $index" v-bind:key="$index + 1">{{n}}</span>
+                            </transition-group>
+                          </div>
+                          <div class="card-item__name" v-else key="2">Full Name</div>
+                        </transition>
+                      </label>
+                      <div class="card-item__date" ref="cardDate">
+                        <label for="cardMonth" class="card-item__dateTitle">Expires</label>
+                        <label for="cardMonth" class="card-item__dateItem">
+                          <transition name="slide-fade-up">
+                            <span v-if="cardMonth" v-bind:key="cardMonth">{{cardMonth}}</span>
+                            <span v-else key="2">MM</span>
+                          </transition>
+                        </label>
+                        /
+                        <label for="cardYear" class="card-item__dateItem">
+                          <transition name="slide-fade-up">
+                            <span v-if="cardYear" v-bind:key="cardYear">{{String(cardYear).slice(2,4)}}</span>
+                            <span v-else key="2">YY</span>
+                          </transition>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-item__side -back">
+                  <div class="card-item__cover">
+                    <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + currentCardBackground + '.jpeg'" class="card-item__bg">
+                  </div>
+                  <div class="card-item__band"></div>
+                  <div class="card-item__cvv">
+                    <div class="card-item__cvvTitle">CVV</div>
+                    <div class="card-item__cvvBand">
+                      <span v-for="(n, $index) in cardCvv" :key="$index">
+                        *
+                      </span>
+        
+                    </div>
+                    <div class="card-item__type">
+                      <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" class="card-item__typeImg">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-form__inner">
+              <div class="card-input">
+                <label for="cardNumber" class="card-input__label">Card Number</label>
+                <input type="text" id="cardNumber" class="card-input__input" v-mask="trimmedCardNumber" maxlength="19" v-model="cardNumber" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardNumber" autocomplete="off">
+              </div>
+              <div class="card-input">
+                <label for="cardName" class="card-input__label">Card Holders</label>
+                <input type="text" id="cardName" class="card-input__input" v-model="cardName" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardName" autocomplete="off">
+              </div>
+              <div class="card-form__row">
+                <div class="card-form__col">
+                  <div class="card-form__group">
+                    <label for="cardMonth" class="card-input__label">Expiration Date</label>
+                    <select class="card-input__input -select" id="cardMonth" v-model="cardMonth" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardDate">
+                      <option value="" disabled selected>Month</option>
+                      <option v-bind:value="n < 10 ? '0' + n : n" v-for="n in 12" v-bind:disabled="n < minCardMonth" v-bind:key="n">
+                        {{n < 10 ? '0' + n : n}}
+                      </option>
+                    </select>
+                    <select class="card-input__input -select" id="cardYear" v-model="cardYear" v-on:focus="focusInput" v-on:blur="blurInput" data-ref="cardDate">
+                      <option value="" disabled selected>Year</option>
+                      <option v-bind:value="$index + minCardYear" v-for="(n, $index) in 12" v-bind:key="n">
+                        {{$index + minCardYear}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+                <div class="card-form__col -cvv">
+                  <div class="card-input">
+                    <label for="cardCvv" class="card-input__label">CVV</label>
+                    <input type="text" class="card-input__input" id="cardCvv" v-mask="'####'" maxlength="4" v-model="cardCvv" v-on:focus="flipCard(true)" v-on:blur="flipCard(false)" autocomplete="off">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="underbar">
+      <div class="underbar-left">cancel</div>
+      <div class="underbar-right">confirm payment</div>
+    </div>
+    <!-- Success checkmark animation -->
+    <div class="success-checkmark">
+      <div class="check-icon">
+        <span class="icon-line line-tip"></span>
+        <span class="icon-line line-long"></span>
+        <div class="icon-circle"></div>
+        <div class="icon-fix"></div>
+      </div>
+    </div>
+    <div class="success-message">Card payment has been completed successfully!</div>
+    <!-- Add audio element -->
+    <audio id="success-audio" src="audio/success.m4a"></audio>
+  </div>
+  
+  <script src="path/to/jquery.card.js"></script>
+  <script src="main.js"></script>
+  <script>
+    $(document).ready(function() {
+      $(".success-checkmark").hide();
+      $(".success-message").hide();
+      $("#message-box").hide();
+      
+      $('.underbar-left').on('click', function() {
+        $('#message-box').fadeIn();
+        setTimeout(function() {
+          $('#message-box').fadeOut();
+          window.location.href = 'tickets.html';
+        }, 3000);
+      });
+
+      function checkCVVInput() {
+        // Get the value of CVV input
+        var cvvValue = $('#cardCvv').val().trim();
+    
+        // Check if CVV input matches the required value "1234"
+        if (cvvValue === '1234') {
+          // Enable the button
+          $('.underbar-right').attr('id', 'normal');
+        } else {
+          // Disable the button
+          $('.underbar-right').removeAttr('id');
+        }
+      }
+
+      // Call the function initially to set button state
+      checkCVVInput();
+
+      // Listen for input change in the CVV field
+      $('#cardCvv').on('input', function() {
+        // Call the function to check CVV input and enable/disable button
+        checkCVVInput();
+      });
+
+
+      $('.underbar-right').on('click', function() {
+          $(".success-checkmark").fadeIn();
+          $(".success-message").fadeIn();
+          /*Here*/
+          document.getElementById('success-audio').play();
+          let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
+          let index = parseInt(localStorage.getItem('ticketindex'));
+          ticketlist[index].purchase = 1;
+          localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
+          let tres = parseInt(localStorage.getItem('ticket-reserve')) - 1;
+          localStorage.setItem('ticket-reserve', tres);
+          let treq = parseInt(localStorage.getItem('ticket-purchase')) + 1;
+          localStorage.setItem('ticket-purchase', tpur);
+
+          /*
+          let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
+          let index = parseInt(localStorage.getItem('ticketindex'));
+          ticketlist[index].request = 1;
+          localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
+          let tres = parseInt(localStorage.getItem('ticket-reserve')) - 1;
+          localStorage.setItem('ticket-reserve', tres);
+          let treq = parseInt(localStorage.getItem('ticket-request')) + 10;
+          localStorage.setItem('ticket-request', treq);
+          */
+
+          setTimeout(function() {
+            $(".success-checkmark").fadeOut();
+            $(".success-message").fadeOut();
+          }, 3300);
+          setTimeout(function() {
+            window.location.href = 'tickets.html';
+          }, 3300);
+
+      });
+    });
+
+    new Vue({
+      el: "#app",
+      data() {
+        return {
+          currentCardBackground: Math.floor(Math.random() * 25 + 1),
+          cardName: "",
+          cardNumber: "", // Modified to store only the last 12 digits
+          cardMonth: "",
+          cardYear: "",
+          cardCvv: "",
+          minCardYear: new Date().getFullYear(),
+          amexCardMask: "#### ###### #####",
+          otherCardMask: "#### #### #### ####",
+          cardNumberTemp: "",
+          isCardFlipped: false,
+          focusElementStyle: null,
+          isInputFocused: false
+        };
+      },
+      mounted() {
+        this.cardNumberTemp = this.otherCardMask;
+      },
+      computed: {
+        getCardType() {
+          let number = this.cardNumber;
+          let re = new RegExp("^4");
+          if (number.match(re) != null) return "visa";
+  
+          re = new RegExp("^(34|37)");
+          if (number.match(re) != null) return "amex";
+  
+          re = new RegExp("^5[1-5]");
+          if (number.match(re) != null) return "mastercard";
+  
+          re = new RegExp("^6011");
+          if (number.match(re) != null) return "discover";
+  
+          re = new RegExp("^9792");
+          if (number.match(re) != null) return "troy";
+  
+          return "visa"; // default type
+        },
+        generateCardNumberMask() {
+          return this.getCardType === "amex"
+            ? this.amexCardMask
+            : this.otherCardMask;
+        },
+        trimmedCardNumber() {
+          return this.cardNumber.slice(-12); // Trim to last 12 digits
+        },
+        minCardMonth() {
+          if (this.cardYear === this.minCardYear) return new Date().getMonth() + 1;
+          return 1;
+        }
+      },
+      watch: {
+        cardYear() {
+          if (this.cardMonth < this.minCardMonth) {
+            this.cardMonth = "";
+          }
+        }
+      },
+      methods: {
+        flipCard(status) {
+          this.isCardFlipped = status;
+        },
+        focusInput(e) {
+          this.isInputFocused = true;
+          let targetRef = e.target.dataset.ref;
+          let target = this.$refs[targetRef];
+          this.focusElementStyle = {
+            width: `${target.offsetWidth}px`,
+            height: `${target.offsetHeight}px`,
+            transform: `translateX(${target.offsetLeft}px) translateY(${target.offsetTop}px)`
+          };
+        },
+        blurInput() {
+          let vm = this;
+          setTimeout(() => {
+            if (!vm.isInputFocused) {
+              vm.focusElementStyle = null;
+            }
+          }, 300);
+          vm.isInputFocused = false;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
