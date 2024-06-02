@@ -11,9 +11,15 @@ $(document).ready(function() {
     }
     else if (tres > 0) {
       let text = "";
+      let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
       if (tres == 1) text = "1 ticket reserved";
-      else text = tres + " tickets reserved"
+      else {
+        text = tres + " tickets reserved" ;
+        recent = ticketlist[0].date +" : "+ ticketlist[0].dep + " -> " + ticketlist[0].arr;
+      }
       $('#info').text(text);
+      $('#recent-info').text(recent);
+      $('#recent-info').css({"border":"3px solid"});
     }
     else {
       $('#info').text("No ticket reserved");
@@ -26,4 +32,8 @@ $(document).ready(function() {
       $('#C').on('click', function() {
         window.location.href = 'tickets.html';
       });
+    $('#recent-info').on('click', function() {
+      window.location.href = 'recentticket.html';
+      //$('#rescent-info').text("wtf");
+    });
   });

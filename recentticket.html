@@ -1,0 +1,38 @@
+<head>
+    <!-- Add CSS file -->
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="recentticket.css" />
+    <!-- Add jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="recentticket.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width", initial-scale="1.0">
+  </head>
+  
+  <body>
+    <div class="common-header">My Ticket</div>
+    <img class="bigmap" src="image/PlatformMap.png" alt="bigmap" id = "bigmap" >
+    <div class="ticket-body">
+      <div class="ticket-list" id="reserve">
+        <div class="uncommon-header">Ticket</div>
+        <div class="common-text" style="text-align:left" id="deparr">deparr</div>
+        <div class="common-text" style="text-align:left" id="time">time</div>
+        <div class="common-text" style="text-align:left" id="seat">seat</div>
+        <div class="common-text" style="text-align:left" id="plat">platform</div>
+      </div>
+      <div class="ticket-blank"></div>
+      <div class="ticket-list" id="request">
+        <div class="uncommon-header">Platform Map</div>
+        <img class="platformmap" src="image/PlatformMap.png" alt="platformmap" id = "platformmap">
+      </div>
+      <div class="ticket-blank"></div>
+      <div class="ticket-list">
+        <div class="uncommon-header" id="cash">Train Information</div>
+      </div>
+    </div>
+    <div class="underbar">
+      <div class="underbar-left">prev</div>
+      <div class="underbar-right" id="common">none</div>
+    </div>
+  </body>
+  
