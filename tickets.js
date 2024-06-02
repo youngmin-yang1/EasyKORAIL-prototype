@@ -34,16 +34,18 @@ $(document).ready(function() {
     }
     else if (request == 1) {
       const timerEndTime = localStorage.getItem('timerEndTime');
-      const newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
+      const newtimer = $('<div></div>').addClass('ticket-timer').text("Time remained: ");
       newtimer.attr('id', `timer${i}`);
       newDiv.append(newtimer);
       if (localStorage.getItem(`timerEndTime${i}`) == null) {
         localStorage.setItem(`timerEndTime${i}`, timerEndTime);
       }
       const storedEndTime = localStorage.getItem(`timerEndTime${i}`);
+      newDiv.removeClass('ticket-elem');
+      newDiv.addClass('ticket-elem2');
       $('#request').append(newDiv);
       requestCount++;
-      secondh += 100;
+      secondh += 150;
       const timerElement = document.getElementById(`timer${i}`);
       startTimer(timerElement,storedEndTime, i);
     }
@@ -57,13 +59,13 @@ $(document).ready(function() {
 
         if (timeLeft <= 0) {
             clearInterval(timerIntervals[timerId]);
-            timerElem.textContent = '00:00';
+            timerElem.textContent = "Time remained: " + '00:00';
             localStorage.removeItem(`timerEndTime${timerId}`);
             ticketlist[timerId].request = 0;
         } else {
             const minutes = Math.floor(timeLeft / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            timerElem.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+            timerElem.textContent = "Time remained: " + `${formatTime(minutes)}:${formatTime(seconds)}`;
         }
     }, 1000);
   }
@@ -90,6 +92,13 @@ $(document).ready(function() {
   $('#cash').css({top: firsth + secondh});
 
   $('.ticket-elem').on('click', function() {
+    let clickedElementId = $(this).attr("id");
+    localStorage.setItem('ticketindex', clickedElementId);
+    let request = parseInt(ticketlist[clickedElementId].request);
+    if(request == 0) window.location.href = 'ticket2.html';
+    else if(request == 1) window.location.href = 'ticket3.html';
+  });
+  $('.ticket-elem2').on('click', function() {
     let clickedElementId = $(this).attr("id");
     localStorage.setItem('ticketindex', clickedElementId);
     let request = parseInt(ticketlist[clickedElementId].request);

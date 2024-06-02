@@ -15,6 +15,7 @@ $(document).ready(function() {
   $('#price').text(ticketlist[index].price);
   $('#trainnum').text(ticketlist[index].tnum);
   let pnum = ticketlist[index].ssize;
+  let lever = 1;
   if(pnum > 3) {
     $('#risk2').removeClass('check-elem1');
     $('#risk2').addClass('check-elem3');
@@ -34,6 +35,30 @@ $(document).ready(function() {
       localStorage.setItem('ticket-request', treq);
       localStorage.removeItem(`timerEndTime${index}`);
       window.location.href = 'tickets.html';
+    });
+    $('#Q').on('click', function() {
+      if (lever == 1) {
+      $('#QB').removeClass('hidden');
+      $('#Q').addClass('hidden');
+      lever = 0;
+      }
+    });
+    $('#M').on('click', function() {
+      if (lever == 1) {
+      $('#MB').removeClass('hidden');
+      $('#M').addClass('hidden');
+      lever = 0;
+      }
+    });
+    $('#QB').on('click', function() {
+      $('#Q').removeClass('hidden');
+      $('#QB').addClass('hidden');
+      lever = 1;
+    });
+    $('#MB').on('click', function() {
+      $('#M').removeClass('hidden');
+      $('#MB').addClass('hidden');
+      lever = 1
     });
       $('.underbar-left').on('click', function() {
         window.location.href = 'tickets.html';

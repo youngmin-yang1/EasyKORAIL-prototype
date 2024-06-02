@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  $('.void').addClass('hidden');
   let windowHeight = $(window).height();
   $('.tickettable').css({'top': '50px', height: windowHeight - 178});
   let index = parseInt(localStorage.getItem('ticketindex'));
@@ -15,6 +16,7 @@ $(document).ready(function() {
   $('#price').text(ticketlist[index].price);
   $('#trainnum').text(ticketlist[index].tnum);
   let pnum = ticketlist[index].ssize;
+  let lever = 1;
   if(pnum > 3) {
     $('#risk2').removeClass('check-elem1');
     $('#risk2').addClass('check-elem3');
@@ -27,6 +29,30 @@ $(document).ready(function() {
   $('.check-elem3').children('.check-right').css({'top': '45px', 'line-height': '37px'});
     $('.ticket-request').on('click', function() {
       window.location.href = 'request.html';
+    });
+    $('#Q').on('click', function() {
+      if (lever == 1) {
+      $('#QB').removeClass('hidden');
+      $('#Q').addClass('hidden');
+      lever = 0;
+      }
+    });
+    $('#M').on('click', function() {
+      if (lever == 1) {
+      $('#MB').removeClass('hidden');
+      $('#M').addClass('hidden');
+      lever = 0;
+      }
+    });
+    $('#QB').on('click', function() {
+      $('#Q').removeClass('hidden');
+      $('#QB').addClass('hidden');
+      lever = 1;
+    });
+    $('#MB').on('click', function() {
+      $('#M').removeClass('hidden');
+      $('#MB').addClass('hidden');
+      lever = 1
     });
       $('.underbar-left').on('click', function() {
         window.location.href = 'tickets.html';
