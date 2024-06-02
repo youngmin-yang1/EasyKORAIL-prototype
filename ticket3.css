@@ -3,14 +3,14 @@
 
 .check-elem1 {
   width: 100%;
-  height: 45px;
+  height: 50px;
   border-bottom: 1px solid black;
   position: relative;
   top: 0;
   font-family: "Inter";
   font-weight: 700;
   line-height: 50px;
-  font-size: 22px;
+  font-size: 24px;
   vertical-align: center;
   letter-spacing: 2px;
   box-sizing: border-box;
@@ -26,7 +26,7 @@
   font-family: "Inter";
   font-weight: 700;
   line-height: 40px;
-  font-size: 22px;
+  font-size: 24px;
   vertical-align: center;
   letter-spacing: 2px;
   box-sizing: border-box;
@@ -47,6 +47,8 @@
   box-sizing: border-box;
 }
 
+
+
 .check-elem4 {
   width: 100%;
   height: 230px;
@@ -62,6 +64,7 @@
   box-sizing: border-box;
 }
 
+
 .check-elem5 {
   width: 100%;
   height: 80px;
@@ -76,6 +79,7 @@
   letter-spacing: 2px;
   box-sizing: border-box;
 }
+
 
 .check-left {
   width: 350px;
@@ -107,12 +111,15 @@
   position: absolute;
 }
 
-
 .qr-code {
-  width: 120px; /* Adjust the width as needed */
+  width: 200px;
+  height: 200px;
+  right: 0px;
+  position: absolute;
   margin-top: 10px;
   height: auto; /* Maintain aspect ratio */
 }
+
 
 .ticket-rr {
   width: 100%;
@@ -130,4 +137,16 @@
   border-top: 3px solid black;
   border-bottom: 3px solid black;
   z-index: 10;
+}
+
+.tickettable {
+  width: 100%;
+  height: 0px;
+  overflow: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-sizing: border-box;
 }

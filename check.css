@@ -17,21 +17,6 @@
   z-index: 91;
 }
 
-.check-instr {
-  width: 100%;
-  height: 50px;
-
-  font-family: "Inter";
-  font-weight: 700;
-  line-height: 50px;
-  font-size: 24px;
-  vertical-align: center;
-  letter-spacing: 2px;
-  box-sizing: border-box;
-  text-align: center;
-  z-index: 91;
-}
-
 .check-elem2 {
   width: 100%;
   height: 90px;
@@ -62,23 +47,6 @@
   box-sizing: border-box;
 }
 
-
-.check-elem5 {
-  width: 100%;
-  height: 80px;
-  border-bottom: 1px solid black;
-  position: relative;
-  top: 0;
-  font-family: "Inter";
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 40px;
-  vertical-align: center;
-  letter-spacing: 2px;
-  box-sizing: border-box;
-}
-
-
 .check-left {
   width: 350px;
   position: absolute;
@@ -92,14 +60,6 @@
   text-align: right;
   right: 30px;
   position: absolute;
-}
-
-
-.check-left-temp {
-  width: 350px;
-  position: absolute;
-  left: 30px;
-  text-align: left;
 }
 
 .check-right-temp {
