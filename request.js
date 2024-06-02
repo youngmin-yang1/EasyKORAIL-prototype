@@ -106,8 +106,11 @@ $(document).ready(function() {
   $('.underbar-left').on('click', function() {
     window.location.href = 'ticket2.html';
   });
-  $('.underbar-right').on('click', function() {
-    // ID가 있는지 확인하고, 있으면 제거, 없으면 추가
+  $('.common-header').on('click', function() {
+    $('.station-listback').animate({top: '100vh'}, 500);
+  });
+  $('.underbar-right').on('click', function () {
+    // Check if the button has the 'normal' id, indicating it is active
     if ($(this).attr('id') === 'normal') {
       let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
       let index = parseInt(localStorage.getItem('ticketindex'));
@@ -117,7 +120,12 @@ $(document).ready(function() {
       localStorage.setItem('ticket-reserve', tres);
       let treq = parseInt(localStorage.getItem('ticket-request')) + 1;
       localStorage.setItem('ticket-request', treq);
-      window.location.href = 'tickets.html';
+      
+      
+      // Delay the redirect by 3 seconds
+      setTimeout(function () {
+        window.location.href = 'tickets.html';
+      }, 3000);
     }
   });
   $('.common-header').on('click', function() {
