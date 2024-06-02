@@ -104,8 +104,19 @@
   padding-left: 30px;
 }
 
+#T1 {
+  top: 100px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
 
-.reservation-progress{
-  color: #77DD77
+#T2 {
+  bottom: 75px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+#S {
+  top: 75px;
 }
 

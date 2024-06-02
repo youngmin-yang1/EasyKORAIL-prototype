@@ -18,12 +18,24 @@ $(document).ready(function() {
     else {
       $('#info').text("No ticket reserved");
     }
+    $('.tuto-text').css({'top': '-30px'});
     let windowHeight = $(window).height();
+    let tm = localStorage.getItem('tutomain');
+    if (tm === "AAA") {
+      $('.tuto-black').removeClass('hidden');
+      $('.tuto-text').removeClass('hidden');
+      let ntm = "BBB"
+      localStorage.setItem('tutomain', ntm);
+    }
     $('.main-body').css({'top': '0px', height: windowHeight - 50});
       $('#R').on('click', function() {
         window.location.href = 'station.html';
       });
       $('#C').on('click', function() {
         window.location.href = 'tickets.html';
+      });
+      $('.tuto-black').on('click', function() {
+        $('.tuto-black').addClass('hidden');
+      $('.tuto-text').addClass('hidden');
       });
   });
