@@ -5,11 +5,13 @@ $(document).ready(function() {
     $('.reservation-progress').text(phone);
     let totaln = parseInt(localStorage.getItem('totalcount'));
     let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
+    let ticketnum = -1;
     if (totaln > -1) {
       if(ticketlist[totaln] !== "") {
         recent = ticketlist[totaln].date +" :"+ "<br>" +ticketlist[totaln].dep + " -> " + ticketlist[totaln].arr;
         $('#recent-info').removeClass('hidden');
         $('#recent-info').html(recent);
+        ticketnum = ticketlist[totaln].request;
         }
     }
     $('.tuto-text').css({'top': '-30px'});
@@ -30,7 +32,9 @@ $(document).ready(function() {
       });
 
     $('#recent-info').on('click', function() {
-      window.location.href = 'recentticket.html';
+      localStorage.setItem('ticketindex', totaln);
+      if (ticketnum == 0) window.location.href = 'ticket2.html';
+      else if (ticketnum == 1) window.location.href = 'ticket3.html';
     });
 
     $('.tuto-black').on('click', function() {

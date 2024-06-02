@@ -45,7 +45,7 @@ $(document).ready(function() {
       newDiv.addClass('ticket-elem2');
       $('#request').append(newDiv);
       requestCount++;
-      secondh += 150;
+      secondh += 140;
       const timerElement = document.getElementById(`timer${i}`);
       startTimer(timerElement,storedEndTime, i);
     }

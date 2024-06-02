@@ -35,19 +35,22 @@ body {
   color: white;
   padding: 10px;
   font-family: "Inter";
+  border-radius: 15px;
   font-weight: 800;
   font-size: 24px;
   line-height: 30px;
   text-align: left;
+  letter-spacing: 2px;
   vertical-align: center;
   box-sizing: border-box;
+  opacity: 0.8;
 }
 
 .tuto-x {
   width: 30px;
   position: absolute;
   right: 30px;
-  top: 30px;
+  top: 10px;
   color: #cdcdcd;
   font-family: "Inter";
   font-weight: 800;

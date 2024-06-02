@@ -19,6 +19,7 @@ $(document).ready(function() {
   if (tm === "AAA") {
     $('.tuto-black').removeClass('hidden');
     $('.tuto-text').removeClass('hidden');
+    $('.tuto-x').css({top: 10});
     let ntm = "BBB"
     localStorage.setItem('tutores', ntm);
   }
