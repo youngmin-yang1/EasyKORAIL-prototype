@@ -18,6 +18,7 @@ $(document).ready(function() {
         recent = ticketlist[0].date +" : "+ ticketlist[0].dep + " -> " + ticketlist[0].arr;
       }
       $('#info').text(text);
+      $('#recent-info').css({"visibility":"visible"});
       $('#recent-info').text(recent);
       $('#recent-info').css({"border":"3px solid"});
     }
