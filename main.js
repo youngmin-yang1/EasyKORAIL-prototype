@@ -11,14 +11,31 @@ $(document).ready(function() {
     }
     else if (tres > 0) {
       let text = "";
-      if (tres == 1) text = "1 ticket reserved";
-      else text = tres + " tickets reserved"
+      let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
+      if (tres == 1){
+        text = "1 ticket reserved";
+      }
+      else {
+        text = tres + " tickets reserved" ;
+      }
+      recent = ticketlist[0].date +" : "+ ticketlist[0].dep + " -> " + ticketlist[0].arr;
       $('#info').text(text);
+      $('#recent-info').css({"visibility":"visible"});
+      $('#recent-info').text(recent);
+      $('#recent-info').css({"border":"3px solid"});
     }
     else {
       $('#info').text("No ticket reserved");
     }
+    $('.tuto-text').css({'top': '-30px'});
     let windowHeight = $(window).height();
+    let tm = localStorage.getItem('tutomain');
+    if (tm === "AAA") {
+      $('.tuto-black').removeClass('hidden');
+      $('.tuto-text').removeClass('hidden');
+      let ntm = "BBB"
+      localStorage.setItem('tutomain', ntm);
+    }
     $('.main-body').css({'top': '0px', height: windowHeight - 50});
       $('#R').on('click', function() {
         window.location.href = 'station.html';
@@ -26,4 +43,14 @@ $(document).ready(function() {
       $('#C').on('click', function() {
         window.location.href = 'tickets.html';
       });
+
+    $('#recent-info').on('click', function() {
+      window.location.href = 'recentticket.html';
+    });
+
+    $('.tuto-black').on('click', function() {
+      $('.tuto-black').addClass('hidden');
+    $('.tuto-text').addClass('hidden');
+    });
+
   });

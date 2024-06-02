@@ -7,6 +7,7 @@ $(document).ready(function() {
   let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
   let reserveCount = 0;
   let requestCount = 0;
+  let timerIntervals = {}; // 각 타이머의 interval을 저장할 객체
 
   for (let i = 0; i < ticketlist.length; i += 1){
     if(ticketlist[i] === "") continue; 
@@ -20,7 +21,8 @@ $(document).ready(function() {
     let newright = $('<div></div>').addClass('ticket-right').text(newtext);
     if (newtext.length > 25) newright.css({'font-size': '18px'});
     else if (newtext.length > 23) newright.css({'font-size': '20px'});
-    else if (newtext.length > 22) newright.css({'font-size': '22px'});
+    else if (newtext.length > 21) newright.css({'font-size': '22px'});
+    newright.css({'top': '50px'});
     newDiv.append(newleft);
     newDiv.append(newright);
     newDiv.attr('id', i);
@@ -31,22 +33,53 @@ $(document).ready(function() {
       firsth += 100;
     }
     else if (request == 1) {
-      let newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
+      const timerEndTime = localStorage.getItem('timerEndTime');
+      const newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
+      newtimer.attr('id', `timer${i}`);
       newDiv.append(newtimer);
+      if (localStorage.getItem(`timerEndTime${i}`) == null) {
+        localStorage.setItem(`timerEndTime${i}`, timerEndTime);
+      }
+      const storedEndTime = localStorage.getItem(`timerEndTime${i}`);
       $('#request').append(newDiv);
       requestCount++;
       secondh += 100;
+      const timerElement = document.getElementById(`timer${i}`);
+      startTimer(timerElement,storedEndTime, i);
     }
+  }
+
+  function startTimer(timerElem, endTime, timerId) {
+    clearInterval(timerIntervals[timerId]);
+    timerIntervals[timerId] = setInterval(() => {
+        const now = new Date().getTime();
+        const timeLeft = endTime - now;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerIntervals[timerId]);
+            timerElem.textContent = '00:00';
+            localStorage.removeItem(`timerEndTime${timerId}`);
+            ticketlist[i].request = 0;
+        } else {
+            const minutes = Math.floor(timeLeft / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            timerElem.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+        }
+    }, 1000);
+  }
+
+  function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
   }
 
 
   // Append the default count beside each title
-  $('#reserve .uncommon-header').append(' (0)');
-  $('#request .uncommon-header').append(' (0)');
+  $('#reserve .common-header').append(' (0)');
+  $('#request .common-header').append(' (0)');
 
   // Update the counts if there are elements in the lists
-  if (reserveCount > 0) $('#reserve .uncommon-header').text('Reserved (' + reserveCount + ')');
-  if (requestCount > 0) $('#request .uncommon-header').text('Payment requested (' + requestCount + ')');
+  if (reserveCount > 0) $('#reserve .common-header').text('Reserved (' + reserveCount + ')');
+  if (requestCount > 0) $('#request .common-header').text('Payment requested (' + requestCount + ')');
 
   // Store the counts in localStorage
   localStorage.setItem('ticket-reserve', reserveCount);

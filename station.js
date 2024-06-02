@@ -15,17 +15,23 @@ $(document).ready(function() {
   let table = $('.station-list');
   let tableheight = windowHeight - 50;
   table.css({top: 50, height: tableheight});
-
+  let tm = localStorage.getItem('tutores');
+  if (tm === "AAA") {
+    $('.tuto-black').removeClass('hidden');
+    $('.tuto-text').removeClass('hidden');
+    let ntm = "BBB"
+    localStorage.setItem('tutores', ntm);
+  }
   $('#departure').on('click', function() {
     // ID가 있는지 확인하고, 있으면 제거, 없으면 추가
     num = 0;
-    $('.common-header').text('Departure Station');
+    $('.common-header').text(' < Departure Station');
     $('.station-listback').animate({top: 0}, 500);
   });
   $('#arrival').on('click', function() {
     // ID가 있는지 확인하고, 있으면 제거, 없으면 추가
     num = 1;
-    $('.common-header').text('Arrival Station');
+    $('.common-header').text(' < Arrival Station');
     $('.station-listback').animate({top: 0}, 500);
   });
 
@@ -56,5 +62,9 @@ $(document).ready(function() {
     });
   $('.common-header').on('click', function() {
     $('.station-listback').animate({top: '100vh'}, 500);
+  });
+  $('.tuto-black').on('click', function() {
+    $('.tuto-black').addClass('hidden');
+  $('.tuto-text').addClass('hidden');
   });
 });
