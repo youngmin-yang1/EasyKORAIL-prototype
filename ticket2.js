@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  let windowHeight = $(window).height();
+  $('.tickettable').css({'top': '50px', height: windowHeight - 178});
   let index = parseInt(localStorage.getItem('ticketindex'));
   let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
   $('#common').css({'background-color': '#D9D9D9'})

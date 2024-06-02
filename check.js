@@ -106,32 +106,30 @@ $(document).ready(function() {
   }
   $('.check-elem2').children('.check-right').css({'top': '42px', 'line-height': '40px'});
   $('.check-elem3').children('.check-right').css({'top': '45px', 'line-height': '37px'});
-  // Use event delegation for dynamic elements
-  $('body').on('click', '.underbar-left-temp2', function() {
-    window.location.href = 'seat.html';
+      $('.underbar-left').on('click', function() {
+        window.location.href = 'seat.html';
+      });
+      $('.underbar-right').on('click', function() {
+        let ticket = {
+          dep: departure,
+          arr: arrival,
+          tnum: trainnum,
+          pass: passenger,
+          psize: passsize,
+          date: date,
+          dept: startTime,
+          arrt: endTime,
+          dur: dur,
+          seats: seats,
+          ssize: pnum,
+          price: formattedString,
+          request: 0
+        };
+        let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
+        ticketlist.push(ticket);
+        localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
+        let tres = parseInt(localStorage.getItem('ticket-reserve')) + 1;
+        localStorage.setItem('ticket-reserve', tres);
+        window.location.href = 'main.html';
+      });
   });
-
-  $('body').on('click', '.underbar-right-temp2', function() {
-    let ticket = {
-      dep: departure,
-      arr: arrival,
-      tnum: trainnum,
-      pass: passenger,
-      psize: passsize,
-      date: date,
-      dept: startTime,
-      arrt: endTime,
-      dur: dur,
-      seats: seats,
-      ssize: pnum,
-      price: formattedString,
-      request: 0
-    };
-    let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
-    ticketlist.push(ticket);
-    localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
-    let tres = parseInt(localStorage.getItem('ticket-reserve')) + 1;
-    localStorage.setItem('ticket-reserve', tres);
-    window.location.href = 'main.html';
-  });
-});
