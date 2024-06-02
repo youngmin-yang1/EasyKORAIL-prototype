@@ -13,6 +13,10 @@ $(document).ready(function() {
     setTimeout(function() {
         $('.hidden').removeClass('hidden');
     }, 1500);
+    $('.a').on('click', function() {
+        localStorage.setItem('ticketindex', tttc);
+        window.location.href = 'payment.html';
+    });
     
     $('.b').on('click', function() {
         localStorage.setItem('ticketindex', tttc);
