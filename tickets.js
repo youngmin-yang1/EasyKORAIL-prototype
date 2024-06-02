@@ -7,6 +7,7 @@ $(document).ready(function() {
   let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
   let reserveCount = 0;
   let requestCount = 0;
+  let timerIntervals = {}; // 각 타이머의 interval을 저장할 객체
 
   for (let i = 0; i < ticketlist.length; i += 1){
     if(ticketlist[i] === "") continue; 
@@ -32,12 +33,43 @@ $(document).ready(function() {
       firsth += 100;
     }
     else if (request == 1) {
-      let newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
+      const timerEndTime = localStorage.getItem('timerEndTime');
+      const newtimer = $('<div></div>').addClass('ticket-timer').text(" ");
+      newtimer.attr('id', `timer${i}`);
       newDiv.append(newtimer);
+      if (localStorage.getItem(`timerEndTime${i}`) == null) {
+        localStorage.setItem(`timerEndTime${i}`, timerEndTime);
+      }
+      const storedEndTime = localStorage.getItem(`timerEndTime${i}`);
       $('#request').append(newDiv);
       requestCount++;
       secondh += 100;
+      const timerElement = document.getElementById(`timer${i}`);
+      startTimer(timerElement,storedEndTime, i);
     }
+  }
+
+  function startTimer(timerElem, endTime, timerId) {
+    clearInterval(timerIntervals[timerId]);
+    timerIntervals[timerId] = setInterval(() => {
+        const now = new Date().getTime();
+        const timeLeft = endTime - now;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerIntervals[timerId]);
+            timerElem.textContent = '00:00';
+            localStorage.removeItem(`timerEndTime${timerId}`);
+            ticketlist[i].request = 0;
+        } else {
+            const minutes = Math.floor(timeLeft / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            timerElem.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+        }
+    }, 1000);
+  }
+
+  function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
   }
 
 
