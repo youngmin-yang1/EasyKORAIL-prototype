@@ -33,32 +33,32 @@ $(document).ready(function() {
     }
   }
 
-  let timerEndTime = localStorage.getItem('timerEndTime');
-  const timerElement = document.getElementsByClassName('ticket-timer')[0];
-  let timerInterval;
+let timerEndTime = localStorage.getItem('timerEndTime');
+const timerElement = document.getElementsByClassName('ticket-timer')[0];
+let timerInterval;
 
-  startTimer(timerEndTime);
+startTimer(timerEndTime);
 
-  function startTimer(endTime) {
-    clearInterval(timerInterval);
-    timerInterval = setInterval(() => {
-        const now = new Date().getTime();
-        const timeLeft = endTime - now;
+function startTimer(endTime) {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const timeLeft = endTime - now;
 
-        if (timeLeft <= 0) {
-            clearInterval(timerInterval);
-            timerElement.textContent = '00:00';
-            localStorage.removeItem('timerEndTime');
-        } else {
-            const minutes = Math.floor(timeLeft / (1000 * 60));
-            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            timerElement.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
-        }
-    }, 1000);
-  }
-  function formatTime(time) {
-    return time < 10 ? `0${time}` : time;
-  }
+      if (timeLeft <= 0) {
+          clearInterval(timerInterval);
+          timerElement.textContent = '00:00';
+          localStorage.removeItem('timerEndTime');
+      } else {
+          const minutes = Math.floor(timeLeft / (1000 * 60));
+          const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+          timerElement.textContent = `${formatTime(minutes)}:${formatTime(seconds)}`;
+      }
+  }, 1000);
+}
+function formatTime(time) {
+  return time < 10 ? `0${time}` : time;
+}
 
   
   $('#request').css({top: firsth});
