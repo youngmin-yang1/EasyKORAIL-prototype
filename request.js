@@ -120,4 +120,7 @@ $(document).ready(function() {
       window.location.href = 'tickets.html';
     }
   });
+  $('.common-header').on('click', function() {
+    $('.station-listback').animate({top: '100vh'}, 500);
+  });
 });
