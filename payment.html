@@ -10,7 +10,6 @@
   <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
   <style>
     /* Additional custom CSS for the readonly input */
     .contact-name {
@@ -399,23 +398,13 @@
           document.getElementById('success-audio').play();
           let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
           let index = parseInt(localStorage.getItem('ticketindex'));
-          ticketlist[index].purchase = 1;
+          let ticinfo = ticketlist[index].request;
+          ticketlist[index].request = 2;
           localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
           let tres = parseInt(localStorage.getItem('ticket-reserve')) - 1;
           localStorage.setItem('ticket-reserve', tres);
-          let treq = parseInt(localStorage.getItem('ticket-purchase')) + 1;
+          let tpur = parseInt(localStorage.getItem('ticket-purchase')) + 1;
           localStorage.setItem('ticket-purchase', tpur);
-
-          /*
-          let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
-          let index = parseInt(localStorage.getItem('ticketindex'));
-          ticketlist[index].request = 1;
-          localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
-          let tres = parseInt(localStorage.getItem('ticket-reserve')) - 1;
-          localStorage.setItem('ticket-reserve', tres);
-          let treq = parseInt(localStorage.getItem('ticket-request')) + 10;
-          localStorage.setItem('ticket-request', treq);
-          */
 
           setTimeout(function() {
             $(".success-checkmark").fadeOut();

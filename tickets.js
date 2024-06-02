@@ -53,6 +53,8 @@ $(document).ready(function() {
     }
     else if (request == 2) {
       // Write Payment here
+      $('#purchase').append(newDiv);
+      purchaseCount++;
       thirdh += 100;
     }
   }
@@ -89,7 +91,7 @@ $(document).ready(function() {
   // Update the counts if there are elements in the lists
   if (reserveCount > 0) $('#reserve .common-header').text('Reserved (' + reserveCount + ')');
   if (requestCount > 0) $('#request .common-header').text('Payment requested (' + requestCount + ')');
-  if (purchaseCount > 0) $('#purchase .common-header').text('Purchase requested (' + purchaseCount + ')');
+  if (purchaseCount > 0) $('#purchase .common-header').text('Purchased (' + purchaseCount + ')');
 
   // Store the counts in localStorage
   localStorage.setItem('ticket-reserve', reserveCount);
@@ -98,8 +100,7 @@ $(document).ready(function() {
 
 
   $('#request').css({top: firsth});
-  $('#cash').css({top: firsth + secondh});
-  $('#purchase').css({top: firsth + secondh + thirdh});
+  $('#purchase').css({top: firsth + secondh});
 
   $('.ticket-elem').on('click', function() {
     let clickedElementId = $(this).attr("id");
@@ -107,7 +108,7 @@ $(document).ready(function() {
     let request = parseInt(ticketlist[clickedElementId].request);
     if(request == 0) window.location.href = 'ticket2.html';
     else if(request == 1) window.location.href = 'ticket3.html';
-    else if(request == 2) window.location.href = 'ticket3.html'; // Make window move here
+    else if(request == 2) window.location.href = 'ticket4.html'; // Make window move here
   });
   $('.ticket-elem2').on('click', function() {
     let clickedElementId = $(this).attr("id");
@@ -115,6 +116,7 @@ $(document).ready(function() {
     let request = parseInt(ticketlist[clickedElementId].request);
     if(request == 0) window.location.href = 'ticket2.html';
     else if(request == 1) window.location.href = 'ticket3.html';
+    else if(request == 2) window.location.href = 'ticket4.html'; // Make window move here
   });
 
 

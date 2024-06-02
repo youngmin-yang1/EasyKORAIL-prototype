@@ -7,13 +7,18 @@ $(document).ready(function() {
     let totaln = parseInt(localStorage.getItem('totalcount'));
     let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
     let ticketnum = -1;
-    if (totaln > -1) {
-      if(ticketlist[totaln] !== "") {
+    while (totaln > -1) {
+      if(ticketlist[totaln] !== "" && ticketlist[totaln].request == 2) {
         recent = ticketlist[totaln].date +" :"+ "<br>" +ticketlist[totaln].dep + " -> " + ticketlist[totaln].arr;
         $('#recent-info').removeClass('hidden');
+        $('#No').addClass('hidden');
         $('#recent-info').html(recent);
         ticketnum = ticketlist[totaln].request;
+        break;
         }
+      else {
+        totaln -= 1;
+      }
     }
     $('.tuto-text').css({'top': '-30px'});
     let windowHeight = $(window).height();
@@ -34,8 +39,7 @@ $(document).ready(function() {
 
     $('#recent-info').on('click', function() {
       localStorage.setItem('ticketindex', totaln);
-      if (ticketnum == 0) window.location.href = 'ticket2.html';
-      else if (ticketnum == 1) window.location.href = 'ticket3.html';
+      window.location.href = 'ticket4.html';
     });
 
     $('.tuto-black').on('click', function() {

@@ -78,6 +78,7 @@ $(document).ready(function() {
         localStorage.setItem('my-number', number);
         localStorage.setItem('ticket-reserve', '0');
         localStorage.setItem('ticket-request', '0');
+        localStorage.setItem('ticket-purchase', '0');
         let tickets = [];
         localStorage.setItem('ticketlist', JSON.stringify(tickets));
         let first = "AAA"

@@ -1,7 +1,6 @@
 $(document).ready(function() {
-  $('.void').addClass('hidden');
   let windowHeight = $(window).height();
-  $('.tickettable').css({'top': '50px', height: windowHeight - 238});
+  $('.tickettable').css({'top': '50px', height: windowHeight - 118});
   let index = parseInt(localStorage.getItem('ticketindex'));
   let ticketlist = JSON.parse(localStorage.getItem('ticketlist'));
   $('#common').css({'background-color': '#D9D9D9'})
@@ -27,11 +26,15 @@ $(document).ready(function() {
   $('#risk1').children('.check-right').css({'font-size': ticketlist[index].psize});
   $('.check-elem2').children('.check-right').css({'top': '42px', 'line-height': '40px'});
   $('.check-elem3').children('.check-right').css({'top': '45px', 'line-height': '37px'});
-    $('#D').on('click', function() {
-      window.location.href = 'request.html';
-    });
-    $('#U').on('click', function() {
-      window.location.href = 'payment.html';
+    $('.ticket-rr').on('click', function() {
+      ticketlist[index].request = 0;
+      localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
+      let tres = parseInt(localStorage.getItem('ticket-reserve')) + 1;
+      localStorage.setItem('ticket-reserve', tres);
+      let treq = parseInt(localStorage.getItem('ticket-request')) - 1;
+      localStorage.setItem('ticket-request', treq);
+      localStorage.removeItem(`timerEndTime${index}`);
+      window.location.href = 'tickets.html';
     });
     $('#Q').on('click', function() {
       if (lever == 1) {
@@ -58,13 +61,6 @@ $(document).ready(function() {
       lever = 1
     });
       $('.underbar-left').on('click', function() {
-        window.location.href = 'tickets.html';
-      });
-      $('.underbar-right').on('click', function() {
-        ticketlist[index] = "";
-        localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
-        let tres = parseInt(localStorage.getItem('ticket-reserve')) - 1;
-        localStorage.setItem('ticket-reserve', tres);
         window.location.href = 'tickets.html';
       });
   });
