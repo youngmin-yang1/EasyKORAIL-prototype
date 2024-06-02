@@ -21,6 +21,7 @@ $(document).ready(function() {
     if (newtext.length > 25) newright.css({'font-size': '18px'});
     else if (newtext.length > 23) newright.css({'font-size': '20px'});
     else if (newtext.length > 22) newright.css({'font-size': '22px'});
+    newright.css({'top': '50px'});
     newDiv.append(newleft);
     newDiv.append(newright);
     newDiv.attr('id', i);
@@ -41,12 +42,12 @@ $(document).ready(function() {
 
 
   // Append the default count beside each title
-  $('#reserve .uncommon-header').append(' (0)');
-  $('#request .uncommon-header').append(' (0)');
+  $('#reserve .common-header').append(' (0)');
+  $('#request .common-header').append(' (0)');
 
   // Update the counts if there are elements in the lists
-  if (reserveCount > 0) $('#reserve .uncommon-header').text('Reserved (' + reserveCount + ')');
-  if (requestCount > 0) $('#request .uncommon-header').text('Payment requested (' + requestCount + ')');
+  if (reserveCount > 0) $('#reserve .common-header').text('Reserved (' + reserveCount + ')');
+  if (requestCount > 0) $('#request .common-header').text('Payment requested (' + requestCount + ')');
 
   // Store the counts in localStorage
   localStorage.setItem('ticket-reserve', reserveCount);

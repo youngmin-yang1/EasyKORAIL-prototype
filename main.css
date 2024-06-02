@@ -152,6 +152,27 @@ body {
   z-index: 91;
 }
 
+.uncommon-header {
+  width: 100%;
+  height: 50px;
+  border-top: 3px solid black;
+  border-bottom: 3px solid black;
+  background-color: black;
+  color: #F1F1F1;
+  position: relative;
+  top: 0;
+  font-family: "Inter";
+  font-weight: 800;
+  font-size: 28px;
+  padding-left: 20px;
+  line-height: 50px;
+  text-align: left;
+  vertical-align: center;
+  letter-spacing: 2px;
+  box-sizing: border-box;
+  z-index: 91;
+}
+
 .common-text {
   width: 100%;
   height: 50px;

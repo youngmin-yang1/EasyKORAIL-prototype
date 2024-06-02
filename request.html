@@ -284,27 +284,7 @@
       $('.station-listback').removeClass('show');
     });
 
-    $('.underbar-left').on('click', function() {
-      // Clear input fields when cancel is clicked
-      $('.contact-name').val('');
-      $('.login-number').val('');
-    });
 
-    $('.underbar-right').on('click', function() {
-      if ($('.login-number').val() === '') {
-        alert('Please enter a phone number or select a contact.');
-      } else {
-        // Show the animation after form submission
-        $(".success-checkmark").fadeIn();
-        $(".success-message").fadeIn();
-        document.getElementById('success-audio').play();
-        setTimeout(function() {
-          // Hide the animation again after 2 seconds (2000ms)
-          $(".success-checkmark").fadeOut();
-          $(".success-message").fadeOut();
-        }, 3300);
-      }
-    });
   });
 </script>
 </html>

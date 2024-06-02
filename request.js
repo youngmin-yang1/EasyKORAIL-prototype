@@ -120,6 +120,14 @@ $(document).ready(function() {
       localStorage.setItem('ticket-reserve', tres);
       let treq = parseInt(localStorage.getItem('ticket-request')) + 1;
       localStorage.setItem('ticket-request', treq);
+      $(".success-checkmark").fadeIn();
+        $(".success-message").fadeIn();
+        document.getElementById('success-audio').play();
+        setTimeout(function() {
+          // Hide the animation again after 2 seconds (2000ms)
+          $(".success-checkmark").fadeOut();
+          $(".success-message").fadeOut();
+        }, 3300);
       
       
       // Delay the redirect by 3 seconds
