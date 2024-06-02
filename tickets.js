@@ -41,11 +41,13 @@ $(document).ready(function() {
   $('#reserve .uncommon-header').append(' (0)');
   $('#request .uncommon-header').append(' (0)');
 
-
   // Update the counts if there are elements in the lists
   if (reserveCount > 0) $('#reserve .uncommon-header').text('Reserved (' + reserveCount + ')');
   if (requestCount > 0) $('#request .uncommon-header').text('Payment requested (' + requestCount + ')');
 
+  // Store the counts in localStorage
+  localStorage.setItem('ticket-reserve', reserveCount);
+  localStorage.setItem('ticket-request', requestCount);
 
   $('#request').css({top: firsth});
   $('#cash').css({top: firsth + secondh});

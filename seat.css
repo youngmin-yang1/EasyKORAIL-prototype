@@ -103,6 +103,11 @@
   font-size: 24px;
 }
 
+
+.reservation-progress{
+  color: #77DD77
+}
+
 #flip {
   transform: scaleX(-1);
 }
