@@ -62,7 +62,7 @@ $(document).ready(function() {
     });
     let assistance = parseInt(localStorage.getItem('ticket-assistance'));
     if (assistance == 1) {
-      $('.ticket-request').text('Assistance Request sent');
+      $('.ticket-request').text('Assistance Request Sent');
   }
   if(assistance == 0){
     $('.ticket-request').on('click', function() {
