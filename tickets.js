@@ -33,6 +33,8 @@ $(document).ready(function() {
       const timerEndTime = localStorage.getItem('timerEndTime');
       const newtimer = $('<div></div>').addClass('ticket-timer').text("Time remaining: ");
       newtimer.attr('id', `timer${i}`);
+      newDiv.removeClass('ticket-elem');
+      newDiv.addClass('ticket-elem2');
       newDiv.append(newtimer);
       if (localStorage.getItem(`timerEndTime${i}`) == null) {
         localStorage.setItem(`timerEndTime${i}`, timerEndTime);
