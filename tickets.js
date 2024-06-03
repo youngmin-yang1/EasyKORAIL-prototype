@@ -83,6 +83,7 @@ $(document).ready(function() {
             localStorage.removeItem(`timerEndTime${timerId}`);
             ticketlist[timerId] = "";
             localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
+            window.location.href = window.location.href;
         } else {
             const minutes = Math.floor(timeLeft / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
