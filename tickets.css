@@ -160,7 +160,9 @@
 
 .content {
   padding: 20px;
-  background: #fff;
+  background: #2b2b2b;
+  opacity : 0.95;
+  color : #ffffff;
   border-radius: 5px;
   width: 350px;
   position: relative;
