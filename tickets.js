@@ -31,7 +31,7 @@ $(document).ready(function() {
     let request = parseInt(ticketlist[i].request);
     if (request == 0) {
       const timerEndTime = localStorage.getItem('timerEndTime');
-      const newtimer = $('<div></div>').addClass('ticket-timer').text("Time remained: ");
+      const newtimer = $('<div></div>').addClass('ticket-timer').text("Time remaining: ");
       newtimer.attr('id', `timer${i}`);
       newDiv.append(newtimer);
       if (localStorage.getItem(`timerEndTime${i}`) == null) {
@@ -46,7 +46,7 @@ $(document).ready(function() {
     }
     else if (request == 1) {
       const timerEndTime = localStorage.getItem('timerEndTime');
-      const newtimer = $('<div></div>').addClass('ticket-timer').text("Time remained: ");
+      const newtimer = $('<div></div>').addClass('ticket-timer').text("Time remaining: ");
       newtimer.attr('id', `timer${i}`);
       newDiv.append(newtimer);
       if (localStorage.getItem(`timerEndTime${i}`) == null) {
@@ -77,14 +77,14 @@ $(document).ready(function() {
 
         if (timeLeft <= 0) {
             clearInterval(timerIntervals[timerId]);
-            timerElem.textContent = "Time remained: " + '00:00';
+            timerElem.textContent = "Time remaining: " + '00:00';
             localStorage.removeItem(`timerEndTime${timerId}`);
             ticketlist[timerId].request = 0;
             localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
         } else {
             const minutes = Math.floor(timeLeft / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-            timerElem.textContent = "Time remained: " + `${formatTime(minutes)}:${formatTime(seconds)}`;
+            timerElem.textContent = "Time remaining: " + `${formatTime(minutes)}:${formatTime(seconds)}`;
         }
 
         if (timeLeft <= 5 * 60 * 1000) {
