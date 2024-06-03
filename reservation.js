@@ -5,7 +5,7 @@ $(document).ready(function() {
     let tableheight = windowHeight - 100
     table.css({height: tableheight});
     table.css({top: -tableheight + 40});
-    let dummyheight = (tableheight - 675) / 2;
+    let dummyheight = (tableheight - 725);
     $('.progress-dummy').css({height: dummyheight});
     let instheight = $('.instruction').height();
     let bodyheight = tableheight - instheight - 70;
