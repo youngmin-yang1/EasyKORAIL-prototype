@@ -79,7 +79,7 @@ $(document).ready(function() {
             clearInterval(timerIntervals[timerId]);
             timerElem.textContent = "Time remaining: " + '00:00';
             localStorage.removeItem(`timerEndTime${timerId}`);
-            ticketlist[timerId].request = 0;
+            ticketlist[timerId] = "";
             localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
         } else {
             const minutes = Math.floor(timeLeft / (1000 * 60));
