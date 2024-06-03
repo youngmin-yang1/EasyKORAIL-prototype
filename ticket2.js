@@ -65,6 +65,7 @@ $(document).ready(function() {
         localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
         let tres = parseInt(localStorage.getItem('ticket-reserve')) - 1;
         localStorage.setItem('ticket-reserve', tres);
+        localStorage.removeItem(`timerEndTime${index}`);
         window.location.href = 'tickets.html';
       });
   });

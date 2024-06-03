@@ -143,6 +143,7 @@ body {
 
 .big-button-2::after {
   content: "0"; /* Text content of the badge */
+  display: flex; /* Allow flexbox properties */
   z-index: 1;
   position: absolute; /* Position the badge absolutely within .big-button */
   top: -20px; /* Adjust the distance from the top */
@@ -152,7 +153,6 @@ body {
   background-color: rgb(228, 27, 9); /* Background color of the badge */
   color: white; /* Text color of the badge */
   border-radius: 50%; /* Make the badge circular */
-  display: flex; /* Allow flexbox properties */
   justify-content: center; /* Center content horizontally */
   align-items: center; /* Center content vertically */
   font-size: 24px; /* Font size of the text */

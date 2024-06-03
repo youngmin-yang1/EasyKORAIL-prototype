@@ -57,7 +57,13 @@ $(document).ready(function() {
           badge_num += 1;
         }
       }
-    }
+    };
+    // if (badge_num == 0) {
+    //   $('#badge').hide();
+    // }
+    // else {
+    //   $('#badge').show();
+    // }
     const styleElement = document.createElement('style');
     styleElement.innerHTML = `
         .big-button-2::after {

@@ -404,6 +404,7 @@
           localStorage.setItem('ticket-reserve', tres);
           let tpur = parseInt(localStorage.getItem('ticket-purchase')) + 1;
           localStorage.setItem('ticket-purchase', tpur);
+          localStorage.removeItem(`timerEndTime${index}`);
 
           setTimeout(function() {
             $(".success-checkmark").fadeOut();
