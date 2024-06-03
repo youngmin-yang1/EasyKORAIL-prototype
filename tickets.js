@@ -30,9 +30,19 @@ $(document).ready(function() {
     newDiv.attr('id', i);
     let request = parseInt(ticketlist[i].request);
     if (request == 0) {
+      const timerEndTime = localStorage.getItem('timerEndTime');
+      const newtimer = $('<div></div>').addClass('ticket-timer').text("Time remained: ");
+      newtimer.attr('id', `timer${i}`);
+      newDiv.append(newtimer);
+      if (localStorage.getItem(`timerEndTime${i}`) == null) {
+        localStorage.setItem(`timerEndTime${i}`, timerEndTime);
+      }
+      const storedEndTime = localStorage.getItem(`timerEndTime${i}`);
       $('#reserve').append(newDiv);
       reserveCount++;
-      firsth += 100;
+      firsth += 140;
+      const timerElement = document.getElementById(`timer${i}`);
+      startTimer(timerElement,storedEndTime, i);
     }
     else if (request == 1) {
       const timerEndTime = localStorage.getItem('timerEndTime');
@@ -70,11 +80,25 @@ $(document).ready(function() {
             timerElem.textContent = "Time remained: " + '00:00';
             localStorage.removeItem(`timerEndTime${timerId}`);
             ticketlist[timerId].request = 0;
+            localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
         } else {
             const minutes = Math.floor(timeLeft / (1000 * 60));
             const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
             timerElem.textContent = "Time remained: " + `${formatTime(minutes)}:${formatTime(seconds)}`;
         }
+
+        if (timeLeft <= 5 * 60 * 1000) {
+          timerElem.style.color = '#BF1E1A';
+        }
+
+        if (timeLeft <= 1 * 60 * 1000 && timeLeft >= 59 * 1000) { 
+          $('#popup').removeClass('hide')
+        }
+        
+        $('#popup').on('click', function() {
+          $('#popup').addClass('hide');
+        });
+
     }, 1000);
   }
 

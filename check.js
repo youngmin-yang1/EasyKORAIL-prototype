@@ -132,6 +132,10 @@ $(document).ready(function() {
         localStorage.setItem('ticketlist', JSON.stringify(ticketlist));
         let tres = parseInt(localStorage.getItem('ticket-reserve')) + 1;
         localStorage.setItem('ticket-reserve', tres);
+        // 타이머
+        let now = new Date().getTime();
+        let timerEndTime = now + 10 * 60 * 1000;
+        localStorage.setItem('timerEndTime', timerEndTime); 
         window.location.href = 'select.html';
       });
   });

@@ -142,7 +142,7 @@ body {
 }
 
 .big-button-2::after {
-  content: "1"; /* Text content of the badge */
+  content: "0"; /* Text content of the badge */
   z-index: 1;
   position: absolute; /* Position the badge absolutely within .big-button */
   top: -20px; /* Adjust the distance from the top */

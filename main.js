@@ -47,4 +47,25 @@ $(document).ready(function() {
     $('.tuto-text').addClass('hidden');
     });
 
+    let badge_num = 0;
+    for (let i = 0; i < ticketlist.length; i += 1){
+      const storedEndTime = localStorage.getItem(`timerEndTime${i}`);
+      if (storedEndTime != null) {
+        const now = new Date().getTime();
+        const timeLeft = storedEndTime - now;
+        if (timeLeft <= 5 * 60 * 1000) {
+          badge_num += 1;
+        }
+      }
+    }
+    const styleElement = document.createElement('style');
+    styleElement.innerHTML = `
+        .big-button-2::after {
+            content: "${badge_num}"; /* New text content of the badge */
+        }
+    `;
+    document.head.appendChild(styleElement);
+    
+
+
   });
