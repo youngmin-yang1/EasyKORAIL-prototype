@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Add CSS file -->
+  <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="assistance.css" />
+  <!-- Add jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="assistance.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Add custom CSS for the readonly input */
+    .success-message {
+        font-family: "Inter";
+        font-weight: 800;
+      width: 420px;
+      text-align: center;
+      display: none;
+      position: fixed;
+      bottom: 450px;
+      left: 50%;
+      line-height : 40px;
+      transform: translateX(-50%);
+      background-color: #4CAF50; /* Match the checkmark color */
+      opacity : 0.98;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .success-message-1{
+        font-family: "Inter";
+        font-weight: 800;
+        width: 420px;
+        text-align: center;
+        display: none;
+        position: fixed;
+        bottom: 400px;
+        left: 50%;
+        font-size : 20px;
+        line-height : 40px;
+        transform: translateX(-50%);
+        background-color: #4CAF50;/* Match the checkmark color */
+        opacity : 0.98;
+        color: white;
+        padding: 10px 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+    .success-checkmark {
+      width: 80px;
+      height: 115px;
+      margin: 20px auto;
+      display: none; /* Initially hide the checkmark */
+    }
+    .check-icon {
+      width: 80px;
+      height: 80px;
+      position: relative;
+      border-radius: 50%;
+      box-sizing: content-box;
+      border: 4px solid #4CAF50;
+    }
+    .check-icon::before, .check-icon::after {
+      content: '';
+      height: 100px;
+      position: absolute;
+      background: #f1f1f1;
+      transform: rotate(-45deg);
+    }
+    .check-icon::before {
+      top: 3px;
+      left: -2px;
+      width: 30px;
+      transform-origin: 100% 50%;
+      border-radius: 100px 0 0 100px;
+    }
+    .check-icon::after {
+      top: 0;
+      left: 30px;
+      width: 60px;
+      transform-origin: 0 50%;
+      border-radius: 0 100px 100px 0;
+      animation: rotate-circle 4.25s ease-in;
+    }
+    .icon-line {
+      height: 5px;
+      background-color: #4CAF50;
+      display: block;
+      border-radius: 2px;
+      position: absolute;
+      z-index: 10;
+    }
+    .icon-line.line-tip {
+      top: 46px;
+      left: 14px;
+      width: 25px;
+      transform: rotate(45deg);
+      animation: icon-line-tip 0.75s;
+    }
+    .icon-line.line-long {
+      top: 38px;
+      right: 8px;
+      width: 47px;
+      transform: rotate(-45deg);
+      animation: icon-line-long 0.75s;
+    }
+    .icon-circle {
+      top: -4px;
+      left: -4px;
+      z-index: 10;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      position: absolute;
+      box-sizing: content-box;
+      border: 4px solid rgba(76, 175, 80, .5);
+    }
+    .icon-fix {
+      top: 8px;
+      width: 5px;
+      left: 26px;
+      z-index: 1;
+      height: 85px;
+      position: absolute;
+      transform: rotate(-45deg);
+      background-color: #f1f1f1;
+    }
+    @keyframes rotate-circle {
+      0% {
+          transform: rotate(-45deg);
+      }
+      5% {
+          transform: rotate(-45deg);
+      }
+      12% {
+          transform: rotate(-405deg);
+      }
+      100% {
+          transform: rotate(-405deg);
+      }
+    }
+    @keyframes icon-line-tip {
+      0% {
+          width: 0;
+          left: 1px;
+          top: 19px;
+      }
+      54% {
+          width: 0;
+          left: 1px;
+          top: 19px;
+      }
+      70% {
+          width: 50px;
+          left: -8px;
+          top: 37px;
+      }
+      84% {
+          width: 17px;
+          left: 21px;
+          top: 48px;
+      }
+      100% {
+          width: 25px;
+          left: 14px;
+          top: 45px;
+      }
+    }
+    @keyframes icon-line-long {
+      0% {
+          width: 0;
+          right: 46px;
+          top: 54px;
+      }
+      65% {
+          width: 0;
+          right: 46px;
+          top: 54px;
+      }
+      84% {
+          width: 55px;
+          right: 0px;
+          top: 35px;
+      }
+      100% {
+          width: 47px;
+          right: 8px;
+          top: 38px;
+      }
+    }
+    /* Style for the animation container */
+    #nfcAnimationContainer {
+    position: absolute; /* Change position to absolute */
+    top: calc(25% - 250px); /* Position it in the middle of the viewport vertically */
+    left: calc(50% - 200px); /* Position it in the middle of the viewport horizontally */
+      width: 400px;
+      height: 400px;
+      margin: 0 auto;
+    }
+
+    #helpAnimationContainer {
+      position: absolute; /* Change position to absolute */
+      top: calc(34% - 250px); /* Position it in the middle of the viewport vertically */
+      left: calc(57% - 200px); /* Position it in the middle of the viewport horizontally */
+        width: 200px;
+        height: 200px;
+        margin: 0 auto;
+      }
+  </style>
+</head>
+
+<body>
+  <div class="common-header">Quick Assistance</div>
+  <div class="login-body">
+    <div class="login-info"># Step 1 : Please "select the request type" for the assistance. Staff will guide you based on your needs at the designated "Quick Assistance Hub".</div>
+    <input type="text" class="contact-name" placeholder="Selected Reqeust Type" readonly>
+    <input type="text" class="contact-name-1" placeholder="Designated Hub" readonly>
+    <div class="login-send">select request type</div>
+  </div>
+  <div class="underbar">
+    <div class="underbar-left">cancel</div>
+    <div class="underbar-right">send</div>
+  </div>
+  <div class="station-listback">
+    <div class="common-header" id="contact">Request Type</div>
+    <div class="station-list">
+      <div class="station-elem" data-name="Medical Help" data-number="010-1234-5678">Medical Help</div>
+      <div class="station-elem" data-name="Mobility Impairments" data-number="010-2345-6789">Asssistance to Platform : Mobility Impairments</div>
+      <div class="station-elem" data-name="Heavy Baggages" data-number="010-3456-7890">Assistance to Platform : Heavy Baggages</div>
+      <div class="station-elem" data-name="Platform Information" data-number="010-3456-7890">Assistance to Platform : Can Not Find the Designated Platform</div>
+    </div>
+  </div>
+  <!-- Success checkmark animation -->
+  <div class="success-checkmark">
+    <div class="check-icon">
+      <span class="icon-line line-tip"></span>
+      <span class="icon-line line-long"></span>
+      <div class="icon-circle"></div>
+      <div class="icon-fix"></div>
+    </div>
+  </div>
+  <div class="success-message">Assistance request has been sent successfully. Station staff may call you through phone to find you at the hub. Please stay alert.</div>
+  <div class="success-message-1">Success : NFC tag is recognized at the "Daejeon Station : Quick Assistance Hub 7".</div>
+  <!-- Add audio element -->
+  <audio id="success-audio" src="audio/success.m4a"></audio>
+  <audio id="success-audio-2" src="audio/nfc.mp3"></audio>
+    <!-- Container for help animation -->
+    <div id="helpAnimationContainer"></div>
+    <!-- Container for NFC animation -->
+    <div id="nfcAnimationContainer"></div>
+
+  <script>
+    var animationHelp = lottie.loadAnimation({
+      container: document.getElementById('helpAnimationContainer'),
+      renderer: 'svg',
+      loop: false,
+      autoplay: false,
+      path: "./image/help.json",
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid meet'
+      }
+    });
+
+ 
+
+    $(document).ready(function() {
+
+      animationHelp.play();
+      $('#helpAnimationContainer').show();
+
+
+      $('.station-elem').on('click', function() {
+        $('#helpAnimationContainer').remove();  
+        var animationNFC = lottie.loadAnimation({
+          container: document.getElementById('nfcAnimationContainer'),
+          renderer: 'svg',
+          loop: false,
+          autoplay: false,
+          path: "./image/nfc.json",
+          rendererSettings: {
+            preserveAspectRatio: 'xMidYMid meet'
+          }
+        });
+        animationNFC.play();
+        var name = $(this).data('name');
+        var number = $(this).data('number');
+        $('.contact-name').val(name);
+        $('.login-number').val(number);
+        $('.station-listback').removeClass('show');
+
+        $('#nfcAnimationContainer').show();
+
+        $('.login-info').text('# Step 2 : Simply put your smartphone around "Quick Assistance Ring" to ask for the assistance. Then, click "send" to finalize the request.');
+
+        setTimeout(function() {
+          // Show success message and play audio after 4 seconds
+          $('.success-checkmark').show();
+          $('.success-message-1').show();
+          $('#success-audio-2')[0].play();
+      }, 4000);
+
+
+      setTimeout(function() {
+        // Show success message and play audio after 2 seconds
+        $('#nfcAnimationContainer').hide();
+    }, 2000);
+
+ 
+      setTimeout(function() {
+          // Set text and hide success message after additional 1.5 seconds (total 5.5 seconds)
+          var text = "Daejeon Station Hub7";
+          $('.contact-name-1').val(text);
+          $('.success-checkmark').fadeOut();
+          $('.success-message-1').fadeOut();
+          $('.login-info').text('Thank you for waiting! Now you are ready to send the "Quick Assistance Request". Simply click "send" to finalize the request. Station staff wil guide you soon.');
+  
+      }, 9000);
+
+      
+         
+        });
+
+      $('.underbar-right').on('click', function() {
+        // Show success message and play audio
+        $('.success-checkmark').show();
+        $('.success-message').show();
+        $('#success-audio')[0].play();
+        
+        setTimeout(function() {
+          $('.success-checkmark').fadeOut();
+          $('.success-message').fadeOut();
+        }, 3000);
+
+        // Show the animation
+        $('#animationContainer').fadeIn();
+      });
+
+      $('.underbar-left').on('click', function() {
+        // Hide success message if cancel is clicked
+        $('.success-checkmark').hide();
+        $('.success-message').hide();
+        // Hide the animation
+        $('#animationContainer').fadeOut();
+      });
+    });
+  </script>
+</body>
+</html>

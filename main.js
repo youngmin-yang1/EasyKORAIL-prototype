@@ -1,4 +1,9 @@
 $(document).ready(function() {
+  let assistance = parseInt(localStorage.getItem('ticket-assistance'));
+  if (!localStorage.getItem('ticket-assistance')) {
+    // Set assistance variable to 0
+    localStorage.setItem('ticket-assistance', '0');
+  }
   let phone = localStorage.getItem('my-number');
   let tres = parseInt(localStorage.getItem('ticket-reserve'));
   let treq = parseInt(localStorage.getItem('ticket-request'));

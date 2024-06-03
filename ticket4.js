@@ -60,6 +60,17 @@ $(document).ready(function() {
       $('#MB').addClass('hidden');
       lever = 1
     });
+    let assistance = parseInt(localStorage.getItem('ticket-assistance'));
+    if (assistance == 1) {
+      $('.ticket-request').text('Assistance Request sent');
+  }
+  if(assistance == 1){
+    $('.ticket-request').on('click', function() {
+      window.location.href = 'assistance.html';
+    });
+
+  }
+  
       $('.underbar-left').on('click', function() {
         window.location.href = 'tickets.html';
       });
