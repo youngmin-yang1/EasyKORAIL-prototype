@@ -64,7 +64,7 @@ $(document).ready(function() {
     if (assistance == 1) {
       $('.ticket-request').text('Assistance Request sent');
   }
-  if(assistance == 1){
+  if(assistance == 0){
     $('.ticket-request').on('click', function() {
       window.location.href = 'assistance.html';
     });
